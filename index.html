@@ -40,13 +40,30 @@
         .stats-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:15px; margin-top:30px; }
         .stat-box { background:#f9fafb; padding:15px; border-radius:10px; }
         .stat-val { font-size:1.5rem; font-weight:bold; }
+
+        /* ESTILOS NUEVOS: NAVEGACIÓN Y REVISIÓN */
+        .nav-grid { display:flex; flex-wrap:wrap; gap:5px; margin-bottom:15px; justify-content:center; }
+        .nav-num { width:30px; height:30px; display:flex; align-items:center; justify-content:center; border-radius:6px; background:#e5e7eb; color:#666; font-size:0.8rem; cursor:pointer; font-weight:600; }
+        .nav-num.active { background:var(--primary); color:white; transform:scale(1.1); box-shadow:0 2px 5px rgba(37,99,235,0.3); }
+        .nav-num.answered { border:2px solid var(--primary); background:#fff; color:var(--primary); }
+        .nav-num.answered.active { background:var(--primary); color:white; }
+
+        .review-section { margin-top:30px; text-align:left; }
+        .review-item { background:#f9fafb; border:1px solid #e5e7eb; padding:15px; border-radius:12px; margin-bottom:15px; }
+        .review-item.is-correct { border-left:5px solid var(--success); }
+        .review-item.is-wrong { border-left:5px solid var(--danger); }
+        .review-q-text { font-weight:bold; margin-bottom:10px; display:block; }
+        .review-opt { padding:8px; border-radius:6px; margin-bottom:5px; font-size:0.9rem; border:1px solid transparent; }
+        .user-selected-wrong { background:#fee2e2; border-color:var(--danger); color:var(--danger); font-weight:bold; }
+        .correct-answer { background:#dcfce7; border-color:var(--success); color:var(--success); font-weight:bold; }
+        .user-selected-correct { background:#dcfce7; border-color:var(--success); color:var(--success); font-weight:bold; text-decoration:underline; }
     </style>
 </head>
 <body>
 
 <div id="home-screen" class="screen active">
     <div class="hero">
-        <h1>🎓 Tipo Test IISSI</h1>
+        <h1>TIPO TEST IISSI</h1>
         <p>Ingeniería del Software</p>
     </div>
     <button class="btn btn-large" onclick="iniciarTestGlobal()">🚀 SIMULACRO GLOBAL (20 Preguntas)</button>
@@ -63,6 +80,9 @@
         <div><span id="current-q">1</span>/<span id="total-q">20</span></div>
         <div id="timer" style="color:var(--danger);font-weight:bold">30:00</div>
     </div>
+    
+    <div class="nav-grid" id="nav-grid"></div>
+
     <div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
     
     <div class="question-card">
@@ -89,6 +109,9 @@
             <div class="stat-box"><div class="stat-val" id="stat-fail" style="color:var(--danger)">0</div><div>Fallos</div></div>
             <div class="stat-box"><div class="stat-val" id="stat-blank">0</div><div>Blanco</div></div>
         </div>
+        
+        <div class="review-section" id="review-container"></div>
+
         <button class="btn btn-large" style="margin-top:30px;" onclick="irInicio()">Volver al Inicio</button>
     </div>
 </div>
@@ -96,11 +119,9 @@
 <script src="preguntas.js"></script>
 
 <script>
-// DETECTOR DE ERRORES: Si preguntas.js falla, avisa.
 window.onerror = function(msg, url, line) {
-   // Si el error es "DB is not defined", es porque falló la carga de preguntas.js
    if(msg.includes("DB is not defined")) {
-       document.getElementById('grid-temas').innerHTML = "<p style='color:red; font-weight:bold'>ERROR CRÍTICO: No se ha podido cargar el archivo 'preguntas.js'.<br>Asegúrate de que está subido en la misma carpeta y no tiene errores de sintaxis.</p>";
+       document.getElementById('grid-temas').innerHTML = "<p style='color:red; font-weight:bold'>ERROR: No se carga 'preguntas.js'. Revisa que esté subido.</p>";
    }
 };
 
@@ -111,16 +132,9 @@ const multiContainer = document.getElementById('multi-selector');
 
 function initApp() {
     temasContainer.innerHTML = ''; multiContainer.innerHTML = '';
-    
-    // Verificación de seguridad
-    if (typeof DB === 'undefined') {
-        // El onerror saltará, pero por si acaso:
-        console.error("DB no está definida. Revisa preguntas.js");
-        return;
-    }
+    if (typeof DB === 'undefined') return;
 
     const temasDisponibles = [...new Set(DB.map(i => i.t))].sort((a,b) => a-b);
-
     if(temasDisponibles.length===0){
         temasContainer.innerHTML="<p>No hay preguntas cargadas.</p>";
     } else {
@@ -152,15 +166,40 @@ function iniciarTestMulti(){
 function configurarTest(esExamen){
     if(preguntasActuales.length===0) return alert("Sin preguntas.");
     modoExamen=esExamen; respuestasUsuario={}; indiceActual=0; segundosRestantes=1800;
+    
     document.getElementById('home-screen').classList.remove('active');
     document.getElementById('result-screen').classList.remove('active');
     document.getElementById('test-screen').classList.add('active');
-    document.getElementById('btn-prev').style.display='block';
-    document.getElementById('btn-next').style.display='block';
     document.getElementById('total-q').innerText=preguntasActuales.length;
     document.getElementById('timer').style.display = esExamen ? 'block' : 'none';
+    
+    // Generar navegación
+    renderNavigation();
+
     if(esExamen) startTimer();
     renderPregunta();
+}
+
+// NUEVO: Renderiza los cuadraditos de navegación
+function renderNavigation() {
+    const navGrid = document.getElementById('nav-grid');
+    navGrid.innerHTML = '';
+    preguntasActuales.forEach((p, idx) => {
+        const box = document.createElement('div');
+        box.className = 'nav-num';
+        box.innerText = idx + 1;
+        
+        // Estilos según estado
+        if (idx === indiceActual) box.classList.add('active');
+        if (respuestasUsuario[p.uid] && respuestasUsuario[p.uid].length > 0) box.classList.add('answered');
+        
+        box.onclick = () => {
+            indiceActual = idx;
+            renderPregunta();
+            renderNavigation(); // Actualizar activos
+        };
+        navGrid.appendChild(box);
+    });
 }
 
 function startTimer(){
@@ -180,13 +219,17 @@ function renderPregunta(){
     let html=p.q + (esMulti ? `<span class="multi-tag">Selección Múltiple</span>` : "");
     document.getElementById('question-text').innerHTML=html;
     document.getElementById('progress').style.width=`${((indiceActual)/preguntasActuales.length)*100}%`;
+    
     const cont=document.getElementById('options-container'); cont.innerHTML='';
     const letras=['A','B','C','D','E','F'];
     if(!respuestasUsuario[p.uid]) respuestasUsuario[p.uid]=[];
+    
     p.o.forEach((op,idx)=>{
         const btn=document.createElement('div'); btn.className='option-btn';
         btn.innerHTML=`<span class="opt-letter">${letras[idx]})</span><span>${op}</span>`;
         if(respuestasUsuario[p.uid].includes(idx)) btn.classList.add('selected');
+        
+        // Colores en modo practica
         if(!modoExamen && !esMulti && respuestasUsuario[p.uid].length>0){
             if(idx===p.c) { btn.style.borderColor='var(--success)'; btn.style.background='#dcfce7'; }
             else if(respuestasUsuario[p.uid].includes(idx)) { btn.style.borderColor='var(--danger)'; btn.style.background='#fee2e2'; }
@@ -194,22 +237,26 @@ function renderPregunta(){
         btn.onclick=()=>seleccionarOpcion(idx,esMulti); cont.appendChild(btn);
     });
     
-    // Gestión visual de botones
-    if(indiceActual===preguntasActuales.length-1){
-        document.getElementById('btn-next').style.display='none';
-    } else {
-        document.getElementById('btn-next').style.display='block';
-    }
+    // Gestión botones
+    document.getElementById('btn-prev').style.display = (indiceActual === 0) ? 'none' : 'block';
+    document.getElementById('btn-next').style.display = (indiceActual === preguntasActuales.length-1) ? 'none' : 'block';
+    
+    // Actualizar también la navegación superior
+    renderNavigation();
 }
 
 function seleccionarOpcion(idx,esMulti){
     const p=preguntasActuales[indiceActual];
     let sel=respuestasUsuario[p.uid];
+    
     if(!modoExamen && !esMulti && sel.length>0) return;
+
     if(esMulti){
         if(sel.includes(idx)) sel=sel.filter(i=>i!==idx); else sel.push(idx);
     } else { sel=[idx]; }
-    respuestasUsuario[p.uid]=sel; renderPregunta();
+    
+    respuestasUsuario[p.uid]=sel; 
+    renderPregunta();
 }
 
 function navPregunta(dir){
@@ -225,6 +272,51 @@ function arraysIguales(a,b){
     return true;
 }
 
+// NUEVO: Genera la revisión detallada al final
+function generarRevision() {
+    const container = document.getElementById('review-container');
+    container.innerHTML = '<h3>Revisión de respuestas:</h3>';
+    
+    preguntasActuales.forEach((p, index) => {
+        let userAns = respuestasUsuario[p.uid] || [];
+        let isCorrect = false;
+        
+        // Comprobar si acertó
+        if(userAns.length > 0) {
+            if (Array.isArray(p.c)) isCorrect = arraysIguales(userAns, p.c);
+            else isCorrect = (userAns[0] === p.c);
+        }
+
+        // Crear tarjeta de pregunta
+        const card = document.createElement('div');
+        card.className = `review-item ${isCorrect ? 'is-correct' : 'is-wrong'}`;
+        
+        let html = `<span class="review-q-text">${index+1}. ${p.q}</span>`;
+        
+        // Renderizar opciones con colores
+        const letras = ['A','B','C','D','E','F'];
+        p.o.forEach((op, idx) => {
+            let clase = 'review-opt';
+            let extra = '';
+            
+            const fueSeleccionada = userAns.includes(idx);
+            const esLaCorrecta = Array.isArray(p.c) ? p.c.includes(idx) : (p.c === idx);
+
+            if (esLaCorrecta) {
+                clase += ' correct-answer'; // Verde siempre la correcta
+                if (fueSeleccionada) clase += ' user-selected-correct'; // Verde subrayado si acertó
+            } else if (fueSeleccionada) {
+                clase += ' user-selected-wrong'; // Rojo si falló
+            }
+
+            html += `<div class="${clase}"><b>${letras[idx]})</b> ${op}</div>`;
+        });
+
+        card.innerHTML = html;
+        container.appendChild(card);
+    });
+}
+
 function finalizarTest(){
     clearInterval(timerInterval);
     let aciertos=0, fallos=0, blancos=0;
@@ -236,6 +328,7 @@ function finalizarTest(){
             if(ok) aciertos++; else fallos++;
         }
     });
+    
     let pts=(aciertos*0.5)-(fallos*0.4); if(pts<0) pts=0;
     let max=preguntasActuales.length*0.5;
     let nota=(pts*10)/max; if(nota<0) nota=0; if(nota>10) nota=10;
@@ -249,15 +342,17 @@ function finalizarTest(){
     const b=document.getElementById('result-badge');
     if(nota>=5){ b.innerText="APTO"; b.className="result-badge apto"; }
     else { b.innerText="NO APTO"; b.className="result-badge no-apto"; }
+
+    // Generar la revisión visual
+    generarRevision();
 }
 
 function irInicio(){
     document.getElementById('result-screen').classList.remove('active');
     document.getElementById('home-screen').classList.add('active');
-    initApp(); // Recargar menú por si acaso
+    initApp();
 }
 
-// Arrancar App al cargar la página
 window.onload = initApp;
 </script>
 </body>
