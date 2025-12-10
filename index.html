@@ -1,327 +1,100 @@
+¡Tienes toda la razón! Te pido mil disculpas. Revisando mi mensaje anterior, el código se cortó justo al final (es un límite de longitud de texto de la IA) y por eso a tu archivo le falta la mitad del "cerebro". Al faltarle el final, el navegador da error y bloquea los botones.
+
+Vamos a solucionarlo definitivamente. He compactado un poco el código para asegurarme de que esta vez sí llegue entero hasta el final.
+
+Instrucciones:
+Abre tu archivo index.html.
+
+Borra todo. (Que quede en blanco).
+
+Copia y pega este bloque (asegúrate de copiar hasta la etiqueta </html> del final).
+
+HTML
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Autoescuela ISSI - Tests</title>
+    <title>Autoescuela ISSI</title>
     <style>
-        :root {
-            --primary: #2563eb;
-            --danger: #dc2626;
-            --success: #16a34a;
-            --surface: #ffffff;
-            --bg: #f3f4f6;
-            --text: #1f2937;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        /* Pantallas */
-        .screen {
-            display: none;
-            padding: 20px;
-            max-width: 800px;
-            margin: 0 auto;
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        .screen.active {
-            display: block;
-        }
-
-        /* Menu Principal */
-        .hero {
-            text-align: center;
-            padding: 40px 20px;
-        }
-
-        h1 { color: var(--primary); margin-bottom: 10px; }
-        h2 { font-size: 1.2rem; margin-bottom: 20px; color: #4b5563; }
-
-        .grid-temas {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-
-        .btn {
-            background: var(--surface);
-            border: 2px solid var(--primary);
-            color: var(--primary);
-            padding: 15px;
-            border-radius: 12px;
-            font-size: 1rem;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.2s;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .btn:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
-        }
-
-        .btn-large {
-            width: 100%;
-            background: var(--primary);
-            color: white;
-            font-size: 1.2rem;
-            padding: 20px;
-            margin-bottom: 15px;
-        }
-
-        /* Checkbox mode */
-        .topic-selector {
-            background: white;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-            gap: 10px;
-        }
-        
-        .topic-check label {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            cursor: pointer;
-            font-size: 0.9rem;
-        }
-
-        /* Interfaz Test */
-        .test-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: white;
-            padding: 15px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            position: sticky;
-            top: 10px;
-            z-index: 10;
-        }
-
-        .progress-bar {
-            height: 6px;
-            background: #e5e7eb;
-            border-radius: 3px;
-            margin-bottom: 20px;
-            overflow: hidden;
-        }
-        .progress-fill {
-            height: 100%;
-            background: var(--primary);
-            width: 0%;
-            transition: width 0.3s;
-        }
-
-        .question-card {
-            background: white;
-            padding: 25px;
-            border-radius: 16px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            margin-bottom: 20px;
-        }
-
-        .question-text {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-            line-height: 1.5;
-        }
-
-        .multi-tag {
-            font-size: 0.8rem;
-            background: #eff6ff;
-            color: var(--primary);
-            padding: 4px 8px;
-            border-radius: 4px;
-            margin-left: 10px;
-            vertical-align: middle;
-            border: 1px solid #bfdbfe;
-        }
-
-        .options-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .option-btn {
-            text-align: left;
-            padding: 15px;
-            border: 2px solid #e5e7eb;
-            background: white;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.2s;
-            position: relative;
-            display: flex;
-            gap: 10px;
-        }
-
-        .option-btn:hover {
-            border-color: var(--primary);
-            background: #f8fafc;
-        }
-
-        .option-btn.selected {
-            border-color: var(--primary);
-            background: #eff6ff;
-            font-weight: 600;
-        }
-
-        .opt-letter {
-            font-weight: bold;
-            color: #6b7280;
-            min-width: 25px;
-        }
-
-        /* Navegacion Test */
-        .nav-buttons {
-            display: flex;
-            justify-content: space-between;
-            gap: 10px;
-        }
-
-        /* Resultados */
-        .score-card {
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-
-        .score-number {
-            font-size: 4rem;
-            font-weight: 800;
-            color: var(--primary);
-            margin: 10px 0;
-        }
-
-        .result-badge {
-            display: inline-block;
-            padding: 8px 20px;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-        }
-
-        .apto { background: #dcfce7; color: var(--success); }
-        .no-apto { background: #fee2e2; color: var(--danger); }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            margin-top: 30px;
-        }
-        
-        .stat-box {
-            background: #f9fafb;
-            padding: 15px;
-            border-radius: 10px;
-        }
-        
-        .stat-val { font-size: 1.5rem; font-weight: bold; }
-        .stat-label { font-size: 0.8rem; color: #6b7280; }
-
+        :root { --primary:#2563eb; --danger:#dc2626; --success:#16a34a; --bg:#f3f4f6; --text:#1f2937; }
+        body { font-family:system-ui,-apple-system,sans-serif; background:var(--bg); color:var(--text); margin:0; display:flex; flex-direction:column; min-height:100vh; }
+        .screen { display:none; padding:20px; max-width:800px; margin:0 auto; width:100%; }
+        .screen.active { display:block; }
+        .hero { text-align:center; padding:40px 20px; }
+        h1 { color:var(--primary); }
+        .grid-temas { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:15px; margin-bottom:30px; }
+        .btn { background:#fff; border:2px solid var(--primary); color:var(--primary); padding:15px; border-radius:12px; font-weight:600; cursor:pointer; text-align:center; }
+        .btn:hover { background:var(--primary); color:#fff; }
+        .btn-large { width:100%; background:var(--primary); color:#fff; font-size:1.2rem; padding:20px; margin-bottom:15px; }
+        .topic-selector { background:#fff; padding:15px; border-radius:8px; display:grid; grid-template-columns:repeat(auto-fill,minmax(100px,1fr)); gap:10px; margin-bottom:20px; }
+        .test-header { display:flex; justify-content:space-between; align-items:center; background:#fff; padding:15px; border-radius:12px; margin-bottom:20px; position:sticky; top:10px; z-index:10; box-shadow:0 2px 5px rgba(0,0,0,0.1); }
+        .progress-bar { height:6px; background:#e5e7eb; border-radius:3px; margin-bottom:20px; overflow:hidden; }
+        .progress-fill { height:100%; background:var(--primary); width:0%; transition:width 0.3s; }
+        .question-card { background:#fff; padding:25px; border-radius:16px; margin-bottom:20px; box-shadow:0 4px 6px rgba(0,0,0,0.05); }
+        .question-text { font-size:1.1rem; font-weight:600; margin-bottom:20px; }
+        .multi-tag { font-size:0.8rem; background:#eff6ff; color:var(--primary); padding:4px 8px; border-radius:4px; margin-left:10px; border:1px solid #bfdbfe; }
+        .options-grid { display:flex; flex-direction:column; gap:10px; }
+        .option-btn { padding:15px; border:2px solid #e5e7eb; background:#fff; border-radius:8px; cursor:pointer; display:flex; gap:10px; }
+        .option-btn:hover { border-color:var(--primary); background:#f8fafc; }
+        .option-btn.selected { border-color:var(--primary); background:#eff6ff; font-weight:600; }
+        .opt-letter { font-weight:bold; color:#6b7280; min-width:25px; }
+        .nav-buttons { display:flex; justify-content:space-between; gap:10px; }
+        .score-card { background:#fff; padding:40px; border-radius:20px; text-align:center; }
+        .score-number { font-size:4rem; font-weight:800; color:var(--primary); margin:10px 0; }
+        .result-badge { display:inline-block; padding:8px 20px; border-radius:50px; font-weight:bold; margin-bottom:20px; }
+        .apto { background:#dcfce7; color:var(--success); }
+        .no-apto { background:#fee2e2; color:var(--danger); }
+        .stats-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:15px; margin-top:30px; }
+        .stat-box { background:#f9fafb; padding:15px; border-radius:10px; }
+        .stat-val { font-size:1.5rem; font-weight:bold; }
     </style>
 </head>
 <body>
 
-    <div id="home-screen" class="screen active">
-        <div class="hero">
-            <h1>🎓 Autoescuela ISSI</h1>
-            <p>Ingeniería del Software</p>
-            <p style="font-size: 0.9rem; color: #666;">Selecciona un modo para empezar</p>
-        </div>
+<div id="home-screen" class="screen active">
+    <div class="hero"><h1>🎓 Autoescuela ISSI</h1><p>Ingeniería del Software</p></div>
+    <button class="btn btn-large" onclick="iniciarTestGlobal()">🚀 SIMULACRO GLOBAL (20 Preguntas)</button>
+    <h2>Practicar por Temas</h2>
+    <div class="grid-temas" id="grid-temas"></div>
+    <h2>Test Personalizado</h2>
+    <div class="topic-selector" id="multi-selector"></div>
+    <button class="btn" style="width:100%" onclick="iniciarTestMulti()">Comenzar Personalizado</button>
+</div>
 
-        <button class="btn btn-large" onclick="iniciarTestGlobal()">
-            🚀 SIMULACRO GLOBAL (20 Preguntas)
-        </button>
-
-        <h2>Practicar por Temas</h2>
-        <div class="grid-temas" id="grid-temas">
-            </div>
-
-        <h2>Test Personalizado</h2>
-        <p style="font-size:0.9rem; color:#666; margin-bottom:10px;">Selecciona los temas que quieres mezclar:</p>
-        <div class="topic-selector" id="multi-selector">
-            </div>
-        <button class="btn" style="width:100%" onclick="iniciarTestMulti()">Comenzar Personalizado</button>
+<div id="test-screen" class="screen">
+    <div class="test-header">
+        <div>Pregunta <span id="current-q">1</span>/<span id="total-q">20</span></div>
+        <div id="timer" style="color:var(--danger);font-weight:bold">30:00</div>
     </div>
-
-    <div id="test-screen" class="screen">
-        <div class="test-header">
-            <div>Pregunta <span id="current-q">1</span>/<span id="total-q">20</span></div>
-            <div id="timer" style="font-weight:bold; color:var(--danger)">30:00</div>
-        </div>
-        <div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
-
-        <div class="question-card">
-            <div class="question-text" id="question-text"></div>
-            <div class="options-grid" id="options-container">
-                </div>
-        </div>
-
-        <div class="nav-buttons">
-            <button class="btn" id="btn-prev" onclick="navPregunta(-1)" style="display:none">Anterior</button>
-            <div style="flex:1"></div>
-            <button class="btn" id="btn-next" onclick="navPregunta(1)">Siguiente</button>
-            <button class="btn" id="btn-finish" onclick="finalizarTest()" style="display:none; background:var(--danger); color:white; border-color:var(--danger)">FINALIZAR EXAMEN</button>
-        </div>
+    <div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
+    <div class="question-card">
+        <div class="question-text" id="question-text"></div>
+        <div class="options-grid" id="options-container"></div>
     </div>
-
-    <div id="result-screen" class="screen">
-        <div class="score-card">
-            <h2>Resultado del Test</h2>
-            <div id="result-badge" class="result-badge">---</div>
-            <div>Tu nota final es:</div>
-            <div class="score-number" id="final-score">0.0</div>
-            <p style="color: #666; font-size: 0.9rem;">(Nota sobre 10. Acierto +0.5 / Fallo -0.4)</p>
-
-            <div class="stats-grid">
-                <div class="stat-box">
-                    <div class="stat-val" id="stat-ok" style="color: var(--success)">0</div>
-                    <div class="stat-label">Aciertos</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-val" id="stat-fail" style="color: var(--danger)">0</div>
-                    <div class="stat-label">Fallos</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-val" id="stat-blank">0</div>
-                    <div class="stat-label">En Blanco</div>
-                </div>
-            </div>
-
-            <button class="btn btn-large" style="margin-top: 30px;" onclick="irInicio()">Volver al Inicio</button>
-        </div>
+    <div class="nav-buttons">
+        <button class="btn" id="btn-prev" onclick="navPregunta(-1)" style="display:none">Anterior</button>
+        <div style="flex:1"></div>
+        <button class="btn" id="btn-next" onclick="navPregunta(1)">Siguiente</button>
+        <button class="btn" id="btn-finish" onclick="finalizarTest()" style="display:none; background:var(--danger); color:#fff; border-color:var(--danger)">FINALIZAR EXAMEN</button>
     </div>
+</div>
+
+<div id="result-screen" class="screen">
+    <div class="score-card">
+        <h2>Resultado</h2>
+        <div id="result-badge" class="result-badge">---</div>
+        <div>Nota final:</div>
+        <div class="score-number" id="final-score">0.0</div>
+        <div class="stats-grid">
+            <div class="stat-box"><div class="stat-val" id="stat-ok" style="color:var(--success)">0</div><div>Aciertos</div></div>
+            <div class="stat-box"><div class="stat-val" id="stat-fail" style="color:var(--danger)">0</div><div>Fallos</div></div>
+            <div class="stat-box"><div class="stat-val" id="stat-blank">0</div><div>Blanco</div></div>
+        </div>
+        <button class="btn btn-large" style="margin-top:30px;" onclick="irInicio()">Volver al Inicio</button>
+    </div>
+</div>
 
 <script>
 // =============================================================================
@@ -3856,288 +3629,144 @@ const DB = [
 // MOTOR DE LA APLICACIÓN
 // =============================================================================
 
-let preguntasActuales = [];
-let respuestasUsuario = {}; 
-let indiceActual = 0;
-let timerInterval;
-let segundosRestantes = 1800; // 30 minutos
-let modoExamen = false; 
+let preguntasActuales=[], respuestasUsuario={}, indiceActual=0, timerInterval, segundosRestantes=1800, modoExamen=false;
 
-// 1. GENERACIÓN DINÁMICA DEL MENÚ
 const temasContainer = document.getElementById('grid-temas');
 const multiContainer = document.getElementById('multi-selector');
-temasContainer.innerHTML = '';
-multiContainer.innerHTML = '';
-
-// Buscar qué temas existen en la BD
+temasContainer.innerHTML = ''; multiContainer.innerHTML = '';
 const temasDisponibles = [...new Set(DB.map(i => i.t))].sort((a,b) => a-b);
 
-if(temasDisponibles.length === 0) {
-    temasContainer.innerHTML = "<p>No hay preguntas cargadas en la base de datos.</p>";
+if(temasDisponibles.length===0){
+    temasContainer.innerHTML="<p>No hay preguntas.</p>";
 } else {
     temasDisponibles.forEach(t => {
-        // Botón Menú
-        let btn = document.createElement('div');
-        btn.className = 'btn';
-        btn.innerHTML = `<span>Tema ${t}</span>`;
-        btn.onclick = () => iniciarTestTema(t);
-        temasContainer.appendChild(btn);
-
-        // Checkbox Multi
-        let label = document.createElement('label');
-        label.className = 'topic-check';
-        label.innerHTML = `<input type="checkbox" value="${t}" checked> Tema ${t}`;
-        multiContainer.appendChild(label);
+        let btn=document.createElement('div'); btn.className='btn'; btn.innerHTML=`<span>Tema ${t}</span>`;
+        btn.onclick=()=>iniciarTestTema(t); temasContainer.appendChild(btn);
+        let label=document.createElement('label'); label.className='topic-check';
+        label.innerHTML=`<input type="checkbox" value="${t}" checked> Tema ${t}`; multiContainer.appendChild(label);
     });
 }
 
-// 2. FUNCIONES DE UTILIDAD
-function shuffle(array) {
-    return array.sort(() => Math.random() - 0.5);
+function shuffle(array){ return array.sort(()=>Math.random()-0.5); }
+function getPreguntas(filtroFn, cant=20){
+    let pool=DB.filter(filtroFn);
+    if(pool.length<cant) return shuffle(pool).map((p,i)=>({...p, uid:i}));
+    return shuffle(pool).slice(0,cant).map((p,i)=>({...p, uid:i}));
 }
 
-function getPreguntas(filtroFn, cantidad=20) {
-    let pool = DB.filter(filtroFn);
-    // Si hay menos preguntas de las pedidas, las usamos todas (mezcladas)
-    if(pool.length < cantidad) {
-        return shuffle(pool).map((p, index) => ({...p, uid: index}));
-    }
-    // Si hay de sobra, cogemos 'cantidad' al azar
-    return shuffle(pool).slice(0, cantidad).map((p, index) => ({...p, uid: index}));
+function iniciarTestGlobal(){ preguntasActuales=getPreguntas(p=>true,20); configurarTest(true); }
+function iniciarTestTema(t){ preguntasActuales=getPreguntas(p=>p.t===t,50); configurarTest(false); }
+function iniciarTestMulti(){
+    const checks=document.querySelectorAll('#multi-selector input:checked');
+    const ids=Array.from(checks).map(c=>parseInt(c.value));
+    if(ids.length===0) return alert("Selecciona tema");
+    preguntasActuales=getPreguntas(p=>ids.includes(p.t),20); configurarTest(true);
 }
 
-// 3. INICIO DE TESTS
-function iniciarTestGlobal() {
-    preguntasActuales = getPreguntas(p => true, 20);
-    configurarTest(true);
-}
-
-function iniciarTestTema(temaId) {
-    // Intentamos coger hasta 50 preguntas del tema
-    preguntasActuales = getPreguntas(p => p.t === temaId, 50);
-    configurarTest(false); 
-}
-
-function iniciarTestMulti() {
-    const checks = document.querySelectorAll('#multi-selector input:checked');
-    const temasIds = Array.from(checks).map(c => parseInt(c.value));
-    if(temasIds.length === 0) return alert("Selecciona al menos un tema");
-    
-    preguntasActuales = getPreguntas(p => temasIds.includes(p.t), 20);
-    configurarTest(true);
-}
-
-function configurarTest(esExamen) {
-    if(preguntasActuales.length === 0) return alert("No hay preguntas disponibles para esa selección.");
-    modoExamen = esExamen;
-    respuestasUsuario = {};
-    indiceActual = 0;
-    segundosRestantes = 1800; // Reiniciar tiempo
-    
-    // Cambiar pantalla
+function configurarTest(esExamen){
+    if(preguntasActuales.length===0) return alert("Sin preguntas.");
+    modoExamen=esExamen; respuestasUsuario={}; indiceActual=0; segundosRestantes=1800;
     document.getElementById('home-screen').classList.remove('active');
     document.getElementById('result-screen').classList.remove('active');
     document.getElementById('test-screen').classList.add('active');
-    
-    // Resetear botones navegación
-    document.getElementById('btn-prev').style.display = 'block';
-    document.getElementById('btn-finish').style.display = 'none';
-    document.getElementById('btn-next').style.display = 'block';
-
-    document.getElementById('total-q').innerText = preguntasActuales.length;
-
-    if(esExamen) {
-        startTimer();
-        document.getElementById('timer').style.display = 'block';
-    } else {
-        document.getElementById('timer').style.display = 'none';
-    }
-
+    document.getElementById('btn-prev').style.display='block';
+    document.getElementById('btn-finish').style.display='none';
+    document.getElementById('btn-next').style.display='block';
+    document.getElementById('total-q').innerText=preguntasActuales.length;
+    document.getElementById('timer').style.display = esExamen ? 'block' : 'none';
+    if(esExamen) startTimer();
     renderPregunta();
 }
 
-// 4. LÓGICA DEL TEST
-function startTimer() {
+function startTimer(){
     clearInterval(timerInterval);
-    timerInterval = setInterval(() => {
+    timerInterval=setInterval(()=>{
         segundosRestantes--;
-        let min = Math.floor(segundosRestantes / 60);
-        let sec = segundosRestantes % 60;
-        document.getElementById('timer').innerText = `${min}:${sec < 10 ? '0'+sec : sec}`;
-        if(segundosRestantes <= 0) finalizarTest();
-    }, 1000);
+        let min=Math.floor(segundosRestantes/60), sec=segundosRestantes%60;
+        document.getElementById('timer').innerText=`${min}:${sec<10?'0'+sec:sec}`;
+        if(segundosRestantes<=0) finalizarTest();
+    },1000);
 }
 
-function renderPregunta() {
-    const p = preguntasActuales[indiceActual];
-    const esMulti = Array.isArray(p.c); // ¿Es pregunta de respuesta múltiple?
-
-    document.getElementById('current-q').innerText = indiceActual + 1;
-    
-    // Texto de la pregunta + Etiqueta si es multi
-    let htmlPregunta = p.q;
-    if (esMulti) {
-        htmlPregunta += `<span class="multi-tag">Selección Múltiple</span>`;
-    }
-    document.getElementById('question-text').innerHTML = htmlPregunta;
-    
-    // Barra progreso
-    const pct = ((indiceActual) / preguntasActuales.length) * 100;
-    document.getElementById('progress').style.width = `${pct}%`;
-
-    // Renderizar opciones
-    const cont = document.getElementById('options-container');
-    cont.innerHTML = '';
-    const letras = ['A','B','C','D','E','F'];
-    
-    // Asegurar que existe entrada en respuestasUsuario
-    if(!respuestasUsuario[p.uid]) respuestasUsuario[p.uid] = [];
-
-    p.o.forEach((opcion, idx) => {
-        const btn = document.createElement('div');
-        btn.className = 'option-btn';
-        
-        // Estructura visual: Letra + Texto
-        btn.innerHTML = `<span class="opt-letter">${letras[idx]})</span> <span>${opcion}</span>`;
-        
-        // Marcar si está seleccionada
-        if(respuestasUsuario[p.uid].includes(idx)) {
-            btn.classList.add('selected');
+function renderPregunta(){
+    const p=preguntasActuales[indiceActual];
+    const esMulti=Array.isArray(p.c);
+    document.getElementById('current-q').innerText=indiceActual+1;
+    let html=p.q + (esMulti ? `<span class="multi-tag">Selección Múltiple</span>` : "");
+    document.getElementById('question-text').innerHTML=html;
+    document.getElementById('progress').style.width=`${((indiceActual)/preguntasActuales.length)*100}%`;
+    const cont=document.getElementById('options-container'); cont.innerHTML='';
+    const letras=['A','B','C','D','E','F'];
+    if(!respuestasUsuario[p.uid]) respuestasUsuario[p.uid]=[];
+    p.o.forEach((op,idx)=>{
+        const btn=document.createElement('div'); btn.className='option-btn';
+        btn.innerHTML=`<span class="opt-letter">${letras[idx]})</span><span>${op}</span>`;
+        if(respuestasUsuario[p.uid].includes(idx)) btn.classList.add('selected');
+        if(!modoExamen && !esMulti && respuestasUsuario[p.uid].length>0){
+            if(idx===p.c) { btn.style.borderColor='var(--success)'; btn.style.background='#dcfce7'; }
+            else if(respuestasUsuario[p.uid].includes(idx)) { btn.style.borderColor='var(--danger)'; btn.style.background='#fee2e2'; }
         }
-
-        // --- MODO PRÁCTICA: Colorear si ya respondió ---
-        // (Solo para preguntas simples para evitar spoilers masivos en multi)
-        if(!modoExamen && !esMulti && respuestasUsuario[p.uid].length > 0) {
-            if(idx === p.c) {
-                // Es la correcta -> Verde
-                btn.style.borderColor = 'var(--success)';
-                btn.style.backgroundColor = '#dcfce7';
-            } else if (respuestasUsuario[p.uid].includes(idx)) {
-                // Es la que marcó el usuario y es incorrecta -> Roja
-                btn.style.borderColor = 'var(--danger)';
-                btn.style.backgroundColor = '#fee2e2';
-            }
-        }
-
-        btn.onclick = () => seleccionarOpcion(idx, esMulti);
-        cont.appendChild(btn);
+        btn.onclick=()=>seleccionarOpcion(idx,esMulti); cont.appendChild(btn);
     });
-
-    // Gestión botones Siguiente/Finalizar
-    if(indiceActual === preguntasActuales.length - 1) {
-        document.getElementById('btn-next').style.display = 'none';
-        document.getElementById('btn-finish').style.display = 'block';
+    if(indiceActual===preguntasActuales.length-1){
+        document.getElementById('btn-next').style.display='none';
+        document.getElementById('btn-finish').style.display='block';
     } else {
-        document.getElementById('btn-next').style.display = 'block';
-        document.getElementById('btn-finish').style.display = 'none';
+        document.getElementById('btn-next').style.display='block';
+        document.getElementById('btn-finish').style.display='none';
     }
 }
 
-function seleccionarOpcion(idx, esMulti) {
-    const p = preguntasActuales[indiceActual];
-    let seleccion = respuestasUsuario[p.uid];
-
-    // MODO PRÁCTICA SIMPLE: Si ya contestó, bloquear cambios para que vea el resultado
-    if(!modoExamen && !esMulti && seleccion.length > 0) return;
-
-    if (esMulti) {
-        // Checkbox logic
-        if(seleccion.includes(idx)) {
-            seleccion = seleccion.filter(i => i !== idx); // Desmarcar
-        } else {
-            seleccion.push(idx); // Marcar
-        }
-    } else {
-        // Radio logic
-        seleccion = [idx];
-    }
-    
-    respuestasUsuario[p.uid] = seleccion;
-    renderPregunta();
+function seleccionarOpcion(idx,esMulti){
+    const p=preguntasActuales[indiceActual];
+    let sel=respuestasUsuario[p.uid];
+    if(!modoExamen && !esMulti && sel.length>0) return;
+    if(esMulti){
+        if(sel.includes(idx)) sel=sel.filter(i=>i!==idx); else sel.push(idx);
+    } else { sel=[idx]; }
+    respuestasUsuario[p.uid]=sel; renderPregunta();
 }
 
-function navPregunta(dir) {
-    if(indiceActual + dir >= 0 && indiceActual + dir < preguntasActuales.length) {
-        indiceActual += dir;
-        renderPregunta();
+function navPregunta(dir){
+    if(indiceActual+dir>=0 && indiceActual+dir<preguntasActuales.length){
+        indiceActual+=dir; renderPregunta();
     }
 }
 
-// Comparador de Arrays para ver si acertó la multi respuesta
-function arraysIguales(arrUser, arrCorrect) {
-    if (arrUser.length !== arrCorrect.length) return false;
-    let u = [...arrUser].sort();
-    let c = [...arrCorrect].sort();
-    for (let i = 0; i < u.length; i++) {
-        if (u[i] !== c[i]) return false;
-    }
+function arraysIguales(a,b){
+    if(a.length!==b.length) return false;
+    let s1=[...a].sort(), s2=[...b].sort();
+    for(let i=0;i<s1.length;i++) if(s1[i]!==s2[i]) return false;
     return true;
 }
 
-// 5. FINALIZACIÓN Y CÁLCULO DE NOTA
-function finalizarTest() {
+function finalizarTest(){
     clearInterval(timerInterval);
-    
-    let aciertos = 0;
-    let fallos = 0;
-    let blancos = 0;
-
-    preguntasActuales.forEach(p => {
-        let userAns = respuestasUsuario[p.uid] || [];
-        
-        if (userAns.length === 0) {
-            blancos++;
-        } else {
-            let esCorrecta = false;
-            
-            if (Array.isArray(p.c)) {
-                // Multi: deben coincidir todos los indices
-                esCorrecta = arraysIguales(userAns, p.c);
-            } else {
-                // Simple: debe coincidir el índice
-                esCorrecta = (userAns[0] === p.c);
-            }
-
-            if (esCorrecta) aciertos++;
-            else fallos++;
+    let aciertos=0, fallos=0, blancos=0;
+    preguntasActuales.forEach(p=>{
+        let u=respuestasUsuario[p.uid]||[];
+        if(u.length===0) blancos++;
+        else {
+            let ok = Array.isArray(p.c) ? arraysIguales(u,p.c) : (u[0]===p.c);
+            if(ok) aciertos++; else fallos++;
         }
     });
-
-    // Fórmula: (Aciertos * 0.5) - (Fallos * 0.4)
-    // El máximo posible es (NumPreguntas * 0.5)
-    // Queremos nota sobre 10
+    let pts=(aciertos*0.5)-(fallos*0.4); if(pts<0) pts=0;
+    let max=preguntasActuales.length*0.5;
+    let nota=(pts*10)/max; if(nota<0) nota=0; if(nota>10) nota=10;
     
-    let puntosBrutos = (aciertos * 0.5) - (fallos * 0.4);
-    if(puntosBrutos < 0) puntosBrutos = 0;
-
-    let maxPuntosPosibles = preguntasActuales.length * 0.5;
-    
-    // Regla de tres para nota sobre 10
-    let notaFinal = (puntosBrutos * 10) / maxPuntosPosibles;
-    
-    // Redondeo visual
-    if(notaFinal < 0) notaFinal = 0;
-    if(notaFinal > 10) notaFinal = 10;
-
     document.getElementById('test-screen').classList.remove('active');
     document.getElementById('result-screen').classList.add('active');
-
-    document.getElementById('final-score').innerText = notaFinal.toFixed(2);
-    document.getElementById('stat-ok').innerText = aciertos;
-    document.getElementById('stat-fail').innerText = fallos;
-    document.getElementById('stat-blank').innerText = blancos;
-
-    const badge = document.getElementById('result-badge');
-    if(notaFinal >= 5) {
-        badge.innerText = "APTO";
-        badge.className = "result-badge apto";
-    } else {
-        badge.innerText = "NO APTO";
-        badge.className = "result-badge no-apto";
-    }
+    document.getElementById('final-score').innerText=nota.toFixed(2);
+    document.getElementById('stat-ok').innerText=aciertos;
+    document.getElementById('stat-fail').innerText=fallos;
+    document.getElementById('stat-blank').innerText=blancos;
+    const b=document.getElementById('result-badge');
+    if(nota>=5){ b.innerText="APTO"; b.className="result-badge apto"; }
+    else { b.innerText="NO APTO"; b.className="result-badge no-apto"; }
 }
 
-function irInicio() {
+function irInicio(){
     document.getElementById('result-screen').classList.remove('active');
     document.getElementById('home-screen').classList.add('active');
 }
