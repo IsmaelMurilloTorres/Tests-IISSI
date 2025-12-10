@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autoescuela ISSI - Tests</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --danger: #dc2626;
+            --success: #16a34a;
+            --surface: #ffffff;
+            --bg: #f3f4f6;
+            --text: #1f2937;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Pantallas */
+        .screen {
+            display: none;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .screen.active {
+            display: block;
+        }
+
+        /* Menu Principal */
+        .hero {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        h1 { color: var(--primary); margin-bottom: 10px; }
+        h2 { font-size: 1.2rem; margin-bottom: 20px; color: #4b5563; }
+
+        .grid-temas {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            background: var(--surface);
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            padding: 15px;
+            border-radius: 12px;
+            font-size: 1rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+        }
+
+        .btn-large {
+            width: 100%;
+            background: var(--primary);
+            color: white;
+            font-size: 1.2rem;
+            padding: 20px;
+            margin-bottom: 15px;
+        }
+
+        /* Checkbox mode */
+        .topic-selector {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 10px;
+        }
+        
+        .topic-check label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        /* Interfaz Test */
+        .test-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 10px;
+            z-index: 10;
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: #e5e7eb;
+            border-radius: 3px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: var(--primary);
+            width: 0%;
+            transition: width 0.3s;
+        }
+
+        .question-card {
+            background: white;
+            padding: 25px;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+        }
+
+        .question-text {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .multi-tag {
+            font-size: 0.8rem;
+            background: #eff6ff;
+            color: var(--primary);
+            padding: 4px 8px;
+            border-radius: 4px;
+            margin-left: 10px;
+            vertical-align: middle;
+            border: 1px solid #bfdbfe;
+        }
+
+        .options-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .option-btn {
+            text-align: left;
+            padding: 15px;
+            border: 2px solid #e5e7eb;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+            display: flex;
+            gap: 10px;
+        }
+
+        .option-btn:hover {
+            border-color: var(--primary);
+            background: #f8fafc;
+        }
+
+        .option-btn.selected {
+            border-color: var(--primary);
+            background: #eff6ff;
+            font-weight: 600;
+        }
+
+        .opt-letter {
+            font-weight: bold;
+            color: #6b7280;
+            min-width: 25px;
+        }
+
+        /* Navegacion Test */
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        /* Resultados */
+        .score-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .score-number {
+            font-size: 4rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin: 10px 0;
+        }
+
+        .result-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .apto { background: #dcfce7; color: var(--success); }
+        .no-apto { background: #fee2e2; color: var(--danger); }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .stat-box {
+            background: #f9fafb;
+            padding: 15px;
+            border-radius: 10px;
+        }
+        
+        .stat-val { font-size: 1.5rem; font-weight: bold; }
+        .stat-label { font-size: 0.8rem; color: #6b7280; }
+
+    </style>
+</head>
+<body>
+
+    <div id="home-screen" class="screen active">
+        <div class="hero">
+            <h1>🎓 Autoescuela ISSI</h1>
+            <p>Ingeniería del Software</p>
+            <p style="font-size: 0.9rem; color: #666;">Selecciona un modo para empezar</p>
+        </div>
+
+        <button class="btn btn-large" onclick="iniciarTestGlobal()">
+            🚀 SIMULACRO GLOBAL (20 Preguntas)
+        </button>
+
+        <h2>Practicar por Temas</h2>
+        <div class="grid-temas" id="grid-temas">
+            </div>
+
+        <h2>Test Personalizado</h2>
+        <p style="font-size:0.9rem; color:#666; margin-bottom:10px;">Selecciona los temas que quieres mezclar:</p>
+        <div class="topic-selector" id="multi-selector">
+            </div>
+        <button class="btn" style="width:100%" onclick="iniciarTestMulti()">Comenzar Personalizado</button>
+    </div>
+
+    <div id="test-screen" class="screen">
+        <div class="test-header">
+            <div>Pregunta <span id="current-q">1</span>/<span id="total-q">20</span></div>
+            <div id="timer" style="font-weight:bold; color:var(--danger)">30:00</div>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
+
+        <div class="question-card">
+            <div class="question-text" id="question-text"></div>
+            <div class="options-grid" id="options-container">
+                </div>
+        </div>
+
+        <div class="nav-buttons">
+            <button class="btn" id="btn-prev" onclick="navPregunta(-1)" style="display:none">Anterior</button>
+            <div style="flex:1"></div>
+            <button class="btn" id="btn-next" onclick="navPregunta(1)">Siguiente</button>
+            <button class="btn" id="btn-finish" onclick="finalizarTest()" style="display:none; background:var(--danger); color:white; border-color:var(--danger)">FINALIZAR EXAMEN</button>
+        </div>
+    </div>
+
+    <div id="result-screen" class="screen">
+        <div class="score-card">
+            <h2>Resultado del Test</h2>
+            <div id="result-badge" class="result-badge">---</div>
+            <div>Tu nota final es:</div>
+            <div class="score-number" id="final-score">0.0</div>
+            <p style="color: #666; font-size: 0.9rem;">(Nota sobre 10. Acierto +0.5 / Fallo -0.4)</p>
+
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-val" id="stat-ok" style="color: var(--success)">0</div>
+                    <div class="stat-label">Aciertos</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-val" id="stat-fail" style="color: var(--danger)">0</div>
+                    <div class="stat-label">Fallos</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-val" id="stat-blank">0</div>
+                    <div class="stat-label">En Blanco</div>
+                </div>
+            </div>
+
+            <button class="btn btn-large" style="margin-top: 30px;" onclick="irInicio()">Volver al Inicio</button>
+        </div>
+    </div>
+
+<script>
+// =============================================================================
+// BASE DE DATOS DE PREGUNTAS
+// =============================================================================
+
+const DB = [
+  // --- TEMA 1 (Copiado de tu lista) ---
+  {
+    t: 1,
+    q: "¿Cuál de las siguientes afirmaciones describe mejor una característica del software?",
+    o: ["Es un elemento tangible que se puede tocar", "Se fabrica en una línea de montaje", "Se estropea y desgasta con el uso físico", "Es intangible y no debe tocarse", "Es un componente exclusivamente de hardware", "No requiere ningún proceso de desarrollo"],
+    c: 3
+  },
+  {
+    t: 1,
+    q: "Selecciona las afirmaciones VERDADERAS sobre el software según el texto:",
+    o: ["Se desarrolla, no se fabrica", "Se deteriora físicamente como un coche", "Es un esfuerzo permanente e infinito", "Es intangible", "No tiene costes de mantenimiento", "Solo existe el tipo de sistema hardware"],
+    c: [0, 3]
+  },
+  {
+    t: 1,
+    q: "Según el texto, la ingeniería es una disciplina que...",
+    o: ["Se encarga de fabricar hardware exclusivamente", "Aplica conocimientos científicos para resolver problemas", "Solo se enfoca en la gestión económica", "No tiene relación con soluciones tecnológicas", "Se limita a la programación de código", "Es una rama de las artes visuales"],
+    c: 1
+  },
+  {
+    t: 1,
+    q: "¿Cómo se define un proyecto de software?",
+    o: ["Un esfuerzo permanente para mantener un servicio", "Una tarea repetitiva sin fin", "Un esfuerzo temporal para crear un producto o servicio único", "Un proceso de fabricación industrial en serie", "Un conjunto de herramientas de hardware", "Una metodología de ventas"],
+    c: 2
+  },
+  {
+    t: 1,
+    q: "¿Cuáles de los siguientes son tipos de proyectos software mencionados?",
+    o: ["Productivo", "De hardware puro", "Social", "De entretenimiento", "Científico", "Bélico"],
+    c: [0, 2, 4]
+  },
+  {
+    t: 1,
+    q: "Un proyecto software debe estar limitado en:",
+    o: ["Tiempo y Coste", "Espacio y Materia", "Solo en Tiempo", "Solo en Coste", "Personal y Ubicación", "Hardware y Redes"],
+    c: 0
+  },
+  {
+    t: 1,
+    q: "¿Cuáles son las etapas del ciclo de Deming mencionadas en el texto?",
+    o: ["Plan", "Build", "Do", "Check", "Release", "Act"],
+    c: [0, 2, 3, 5]
+  },
+  {
+    t: 1,
+    q: "En el ciclo de Deming, ¿qué se hace en la etapa 'Plan'?",
+    o: ["Llevar a cabo los objetivos", "Establecer objetivos y procesos necesarios", "Evaluar los resultados obtenidos", "Identificar problemas de la iteración anterior", "Entregar el producto al cliente", "Corregir errores de código"],
+    c: 1
+  },
+  {
+    t: 1,
+    q: "En el ciclo de Deming, ¿qué define la etapa 'Check'?",
+    o: ["Ejecutar el plan establecido", "Planificar los costes", "Evaluar resultados y compararlos con los esperados", "Atajar oportunidades de mejora", "Desplegar el software", "Escribir el código fuente"],
+    c: 2
+  },
+  {
+    t: 1,
+    q: "La etapa 'Act' del ciclo de Deming consiste en:",
+    o: ["Identificar problemas y oportunidades de mejora para la siguiente iteración", "No hacer nada hasta la siguiente fase", "Llevar a cabo los objetivos ciegamente", "Monitorizar los logs del sistema", "Vender el producto al cliente", "Contratar más personal"],
+    c: 0
+  },
+  {
+    t: 1,
+    q: "¿Qué son los entregables en un proyecto software?",
+    o: ["Solo el código fuente final", "El conjunto de productos que deben desarrollarse y entregarse", "Las facturas emitidas al cliente", "Los correos electrónicos del equipo", "Las reuniones diarias", "El hardware donde se instala el sistema"],
+    c: 1
+  },
+  {
+    t: 1,
+    q: "¿Cuál es el coste más alto de todo el ciclo de vida del software?",
+    o: ["La planificación", "El diseño", "El desarrollo (codificación)", "El mantenimiento", "El despliegue", "La gestión de requisitos"],
+    c: 3
+  },
+  {
+    t: 1,
+    q: "¿Qué objetivo tiene la gestión de incidencias?",
+    o: ["Crear nuevas funcionalidades", "Restaurar la operativa normal minimizando el impacto negativo", "Despedir a los responsables del error", "Aumentar el presupuesto del proyecto", "Reescribir todo el software desde cero", "Planificar la siguiente versión"],
+    c: 1
+  },
+  {
+    t: 1,
+    q: "Selecciona los cuatro tipos de mantenimiento existentes:",
+    o: ["Evolutivo", "Preventivo", "Correctivo", "Adaptativo", "Predictivo", "Perfectivo"],
+    c: [0, 2, 3, 5]
+  },
+  {
+    t: 1,
+    q: "¿Qué porcentaje del mantenimiento representa el mantenimiento Evolutivo?",
+    o: ["17%", "5%", "60%", "18%", "25%", "80%"],
+    c: 2
+  },
+  {
+    t: 1,
+    q: "¿En qué consiste el mantenimiento Evolutivo?",
+    o: ["Corrige errores no detectados", "Mejora la calidad interna del sistema", "Adapta el software a cambios tecnológicos", "Incorpora nuevos requisitos o cambios en los existentes", "Realiza copias de seguridad", "Formatea los servidores"],
+    c: 3
+  },
+  {
+    t: 1,
+    q: "¿Qué porcentaje representa el mantenimiento Correctivo?",
+    o: ["60%", "18%", "5%", "10%", "17%", "30%"],
+    c: 4
+  },
+  {
+    t: 1,
+    q: "El mantenimiento que corrige errores del producto no detectados durante el desarrollo es el:",
+    o: ["Evolutivo", "Perfectivo", "Correctivo", "Adaptativo", "Preventivo", "Emergente"],
+    c: 2
+  },
+  {
+    t: 1,
+    q: "¿Qué porcentaje representa el mantenimiento Adaptativo?",
+    o: ["18%", "17%", "60%", "5%", "50%", "12%"],
+    c: 0
+  },
+  {
+    t: 1,
+    q: "El mantenimiento Adaptativo se encarga de:",
+    o: ["Añadir nuevas funcionalidades", "Corregir bugs críticos", "Mejorar la eficiencia del código", "Adaptar a cambios en el entorno tecnológico", "Limpiar la base de datos", "Formar a los usuarios"],
+    c: 3
+  },
+  {
+    t: 1,
+    q: "¿Cuál es el tipo de mantenimiento con menor porcentaje (5%)?",
+    o: ["Evolutivo", "Correctivo", "Adaptativo", "Perfectivo", "De emergencia", "De usuario"],
+    c: 3
+  },
+  {
+    t: 1,
+    q: "El mantenimiento Perfectivo tiene como objetivo:",
+    o: ["Mejorar la calidad interna de los sistemas", "Añadir nuevas pantallas al programa", "Cambiar de sistema operativo", "Arreglar fallos que impiden trabajar", "Hacer el software más bonito visualmente", "Reducir el coste de licencias"],
+    c: 0
+  },
+  {
+    t: 1,
+    q: "¿Qué se entiende por 'Calidad del Software' según el texto?",
+    o: ["Que el software no ocupe mucho espacio", "Cumplir requisitos, estándares y características implícitas esperadas", "Que el software sea gratuito", "Que esté escrito en el lenguaje de programación más moderno", "Que no tenga ninguna línea de comentarios", "Que se desarrolle en menos de un mes"],
+    c: 1
+  },
+  {
+    t: 1,
+    q: "Los costes de aseguramiento de la calidad se compensan con:",
+    o: ["El aumento de precio al cliente", "La reducción de personal", "El ahorro en mantenimiento posterior", "Las subvenciones del estado", "La venta de hardware", "No se compensan, son pérdidas"],
+    c: 2
+  },
+  {
+    t: 1,
+    q: "¿Qué significan las siglas SQA?",
+    o: ["Software Quality Assurance (Aseguradora de Calidad del Software)", "System Questions Answers", "Software Quick Analysis", "Simple Query Application", "System Quality Audit", "Standard Quality Association"],
+    c: 0
+  },
+  {
+    t: 1,
+    q: "Selecciona las responsabilidades del equipo de SQA:",
+    o: ["Establecer el plan de SQA", "Programar todo el código de la aplicación", "Vender el producto", "Auditar los productos de desarrollo", "Documentar desviaciones o no conformidades", "Reparar el hardware de los servidores"],
+    c: [0, 3, 4]
+  },
+  {
+    t: 1,
+    q: "El equipo de SQA participa en:",
+    o: ["La definición del plan de proyecto", "La contratación de personal de limpieza", "La compra de acciones de la empresa", "El diseño gráfico del logotipo", "La instalación eléctrica", "La gestión de nóminas"],
+    c: 0
+  },
+  {
+    t: 1,
+    q: "¿Cuándo pueden generarse entregables en un proyecto?",
+    o: ["Solo al final del proyecto", "Previo al comienzo", "Durante el desarrollo", "Nunca, el software no tiene entregables", "Solo si el cliente lo pide explícitamente", "Solo en la fase de mantenimiento"],
+    c: [1, 2]
+  },
+  {
+    t: 1,
+    q: "¿Qué implica que el software no se 'fabrica'?",
+    o: ["Que no requiere esfuerzo humano", "Que es un proceso lógico de desarrollo y no una manufactura física", "Que se hace solo con máquinas", "Que no tiene costes asociados", "Que siempre sale perfecto a la primera", "Que no se puede vender"],
+    c: 1
+  },
+  {
+    t: 1,
+    q: "En el contexto de la ingeniería del software, 'intangible' significa:",
+    o: ["Que no tiene valor económico", "Que es difícil de entender", "Que no debe tocarse (no tiene presencia física)", "Que es ilegal", "Que está en la nube", "Que es transparente"],
+    c: 2
+  },
+  {
+    t: 1,
+    q: "¿Cuál de los siguientes NO es un tipo de mantenimiento mencionado?",
+    o: ["Evolutivo", "Correctivo", "Destructivo", "Adaptativo", "Perfectivo", "Ninguna de las anteriores"],
+    c: 2
+  },
+  {
+    t: 1,
+    q: "Las desviaciones o no conformidades se detectan en:",
+    o: ["Las reuniones de ventas", "Las revisiones técnicas formales", "La pausa del café", "El momento de la instalación", "Al borrar el código", "En la entrevista de trabajo"],
+    c: 1
+  },
+
+  // -----------------------------------------------------------------------
+  // --- ESPACIO PARA TEMA 2 (Copia y pega aquí tus siguientes preguntas) ---
+  // Recuerda añadir una coma al final de cada bloque }
+  // -----------------------------------------------------------------------
+  
+  // {
+  //   t: 2,
+  //   q: "Pregunta del tema 2...",
+  //   o: ["Op1", "Op2", "Op3", "Op4", "Op5", "Op6"],
+  //   c: 0
+  // },
+
+];
+
+// =============================================================================
+// MOTOR DE LA APLICACIÓN
+// =============================================================================
+
+let preguntasActuales = [];
+let respuestasUsuario = {}; 
+let indiceActual = 0;
+let timerInterval;
+let segundosRestantes = 1800; // 30 minutos
+let modoExamen = false; 
+
+// 1. GENERACIÓN DINÁMICA DEL MENÚ
+const temasContainer = document.getElementById('grid-temas');
+const multiContainer = document.getElementById('multi-selector');
+temasContainer.innerHTML = '';
+multiContainer.innerHTML = '';
+
+// Buscar qué temas existen en la BD
+const temasDisponibles = [...new Set(DB.map(i => i.t))].sort((a,b) => a-b);
+
+if(temasDisponibles.length === 0) {
+    temasContainer.innerHTML = "<p>No hay preguntas cargadas en la base de datos.</p>";
+} else {
+    temasDisponibles.forEach(t => {
+        // Botón Menú
+        let btn = document.createElement('div');
+        btn.className = 'btn';
+        btn.innerHTML = `<span>Tema ${t}</span>`;
+        btn.onclick = () => iniciarTestTema(t);
+        temasContainer.appendChild(btn);
+
+        // Checkbox Multi
+        let label = document.createElement('label');
+        label.className = 'topic-check';
+        label.innerHTML = `<input type="checkbox" value="${t}" checked> Tema ${t}`;
+        multiContainer.appendChild(label);
+    });
+}
+
+// 2. FUNCIONES DE UTILIDAD
+function shuffle(array) {
+    return array.sort(() => Math.random() - 0.5);
+}
+
+function getPreguntas(filtroFn, cantidad=20) {
+    let pool = DB.filter(filtroFn);
+    // Si hay menos preguntas de las pedidas, las usamos todas (mezcladas)
+    if(pool.length < cantidad) {
+        return shuffle(pool).map((p, index) => ({...p, uid: index}));
+    }
+    // Si hay de sobra, cogemos 'cantidad' al azar
+    return shuffle(pool).slice(0, cantidad).map((p, index) => ({...p, uid: index}));
+}
+
+// 3. INICIO DE TESTS
+function iniciarTestGlobal() {
+    preguntasActuales = getPreguntas(p => true, 20);
+    configurarTest(true);
+}
+
+function iniciarTestTema(temaId) {
+    // Intentamos coger hasta 50 preguntas del tema
+    preguntasActuales = getPreguntas(p => p.t === temaId, 50);
+    configurarTest(false); 
+}
+
+function iniciarTestMulti() {
+    const checks = document.querySelectorAll('#multi-selector input:checked');
+    const temasIds = Array.from(checks).map(c => parseInt(c.value));
+    if(temasIds.length === 0) return alert("Selecciona al menos un tema");
+    
+    preguntasActuales = getPreguntas(p => temasIds.includes(p.t), 20);
+    configurarTest(true);
+}
+
+function configurarTest(esExamen) {
+    if(preguntasActuales.length === 0) return alert("No hay preguntas disponibles para esa selección.");
+    modoExamen = esExamen;
+    respuestasUsuario = {};
+    indiceActual = 0;
+    segundosRestantes = 1800; // Reiniciar tiempo
+    
+    // Cambiar pantalla
+    document.getElementById('home-screen').classList.remove('active');
+    document.getElementById('result-screen').classList.remove('active');
+    document.getElementById('test-screen').classList.add('active');
+    
+    // Resetear botones navegación
+    document.getElementById('btn-prev').style.display = 'block';
+    document.getElementById('btn-finish').style.display = 'none';
+    document.getElementById('btn-next').style.display = 'block';
+
+    document.getElementById('total-q').innerText = preguntasActuales.length;
+
+    if(esExamen) {
+        startTimer();
+        document.getElementById('timer').style.display = 'block';
+    } else {
+        document.getElementById('timer').style.display = 'none';
+    }
+
+    renderPregunta();
+}
+
+// 4. LÓGICA DEL TEST
+function startTimer() {
+    clearInterval(timerInterval);
+    timerInterval = setInterval(() => {
+        segundosRestantes--;
+        let min = Math.floor(segundosRestantes / 60);
+        let sec = segundosRestantes % 60;
+        document.getElementById('timer').innerText = `${min}:${sec < 10 ? '0'+sec : sec}`;
+        if(segundosRestantes <= 0) finalizarTest();
+    }, 1000);
+}
+
+function renderPregunta() {
+    const p = preguntasActuales[indiceActual];
+    const esMulti = Array.isArray(p.c); // ¿Es pregunta de respuesta múltiple?
+
+    document.getElementById('current-q').innerText = indiceActual + 1;
+    
+    // Texto de la pregunta + Etiqueta si es multi
+    let htmlPregunta = p.q;
+    if (esMulti) {
+        htmlPregunta += `<span class="multi-tag">Selección Múltiple</span>`;
+    }
+    document.getElementById('question-text').innerHTML = htmlPregunta;
+    
+    // Barra progreso
+    const pct = ((indiceActual) / preguntasActuales.length) * 100;
+    document.getElementById('progress').style.width = `${pct}%`;
+
+    // Renderizar opciones
+    const cont = document.getElementById('options-container');
+    cont.innerHTML = '';
+    const letras = ['A','B','C','D','E','F'];
+    
+    // Asegurar que existe entrada en respuestasUsuario
+    if(!respuestasUsuario[p.uid]) respuestasUsuario[p.uid] = [];
+
+    p.o.forEach((opcion, idx) => {
+        const btn = document.createElement('div');
+        btn.className = 'option-btn';
+        
+        // Estructura visual: Letra + Texto
+        btn.innerHTML = `<span class="opt-letter">${letras[idx]})</span> <span>${opcion}</span>`;
+        
+        // Marcar si está seleccionada
+        if(respuestasUsuario[p.uid].includes(idx)) {
+            btn.classList.add('selected');
+        }
+
+        // --- MODO PRÁCTICA: Colorear si ya respondió ---
+        // (Solo para preguntas simples para evitar spoilers masivos en multi)
+        if(!modoExamen && !esMulti && respuestasUsuario[p.uid].length > 0) {
+            if(idx === p.c) {
+                // Es la correcta -> Verde
+                btn.style.borderColor = 'var(--success)';
+                btn.style.backgroundColor = '#dcfce7';
+            } else if (respuestasUsuario[p.uid].includes(idx)) {
+                // Es la que marcó el usuario y es incorrecta -> Roja
+                btn.style.borderColor = 'var(--danger)';
+                btn.style.backgroundColor = '#fee2e2';
+            }
+        }
+
+        btn.onclick = () => seleccionarOpcion(idx, esMulti);
+        cont.appendChild(btn);
+    });
+
+    // Gestión botones Siguiente/Finalizar
+    if(indiceActual === preguntasActuales.length - 1) {
+        document.getElementById('btn-next').style.display = 'none';
+        document.getElementById('btn-finish').style.display = 'block';
+    } else {
+        document.getElementById('btn-next').style.display = 'block';
+        document.getElementById('btn-finish').style.display = 'none';
+    }
+}
+
+function seleccionarOpcion(idx, esMulti) {
+    const p = preguntasActuales[indiceActual];
+    let seleccion = respuestasUsuario[p.uid];
+
+    // MODO PRÁCTICA SIMPLE: Si ya contestó, bloquear cambios para que vea el resultado
+    if(!modoExamen && !esMulti && seleccion.length > 0) return;
+
+    if (esMulti) {
+        // Checkbox logic
+        if(seleccion.includes(idx)) {
+            seleccion = seleccion.filter(i => i !== idx); // Desmarcar
+        } else {
+            seleccion.push(idx); // Marcar
+        }
+    } else {
+        // Radio logic
+        seleccion = [idx];
+    }
+    
+    respuestasUsuario[p.uid] = seleccion;
+    renderPregunta();
+}
+
+function navPregunta(dir) {
+    if(indiceActual + dir >= 0 && indiceActual + dir < preguntasActuales.length) {
+        indiceActual += dir;
+        renderPregunta();
+    }
+}
+
+// Comparador de Arrays para ver si acertó la multi respuesta
+function arraysIguales(arrUser, arrCorrect) {
+    if (arrUser.length !== arrCorrect.length) return false;
+    let u = [...arrUser].sort();
+    let c = [...arrCorrect].sort();
+    for (let i = 0; i < u.length; i++) {
+        if (u[i] !== c[i]) return false;
+    }
+    return true;
+}
+
+// 5. FINALIZACIÓN Y CÁLCULO DE NOTA
+function finalizarTest() {
+    clearInterval(timerInterval);
+    
+    let aciertos = 0;
+    let fallos = 0;
+    let blancos = 0;
+
+    preguntasActuales.forEach(p => {
+        let userAns = respuestasUsuario[p.uid] || [];
+        
+        if (userAns.length === 0) {
+            blancos++;
+        } else {
+            let esCorrecta = false;
+            
+            if (Array.isArray(p.c)) {
+                // Multi: deben coincidir todos los indices
+                esCorrecta = arraysIguales(userAns, p.c);
+            } else {
+                // Simple: debe coincidir el índice
+                esCorrecta = (userAns[0] === p.c);
+            }
+
+            if (esCorrecta) aciertos++;
+            else fallos++;
+        }
+    });
+
+    // Fórmula: (Aciertos * 0.5) - (Fallos * 0.4)
+    // El máximo posible es (NumPreguntas * 0.5)
+    // Queremos nota sobre 10
+    
+    let puntosBrutos = (aciertos * 0.5) - (fallos * 0.4);
+    if(puntosBrutos < 0) puntosBrutos = 0;
+
+    let maxPuntosPosibles = preguntasActuales.length * 0.5;
+    
+    // Regla de tres para nota sobre 10
+    let notaFinal = (puntosBrutos * 10) / maxPuntosPosibles;
+    
+    // Redondeo visual
+    if(notaFinal < 0) notaFinal = 0;
+    if(notaFinal > 10) notaFinal = 10;
+
+    document.getElementById('test-screen').classList.remove('active');
+    document.getElementById('result-screen').classList.add('active');
+
+    document.getElementById('final-score').innerText = notaFinal.toFixed(2);
+    document.getElementById('stat-ok').innerText = aciertos;
+    document.getElementById('stat-fail').innerText = fallos;
+    document.getElementById('stat-blank').innerText = blancos;
+
+    const badge = document.getElementById('result-badge');
+    if(notaFinal >= 5) {
+        badge.innerText = "APTO";
+        badge.className = "result-badge apto";
+    } else {
+        badge.innerText = "NO APTO";
+        badge.className = "result-badge no-apto";
+    }
+}
+
+function irInicio() {
+    document.getElementById('result-screen').classList.remove('active');
+    document.getElementById('home-screen').classList.add('active');
+}
+</script>
+</body>
+</html>
