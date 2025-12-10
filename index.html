@@ -5,33 +5,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TIPO TEST IISSI</title>
     <style>
-        :root { --primary:#2563eb; --danger:#dc2626; --success:#16a34a; --warning:#f59e0b; --bg:#f3f4f6; --text:#1f2937; }
+        :root { 
+            --primary: #2563eb; 
+            --secondary: #4f46e5; /* Color para la zona de examen */
+            --danger: #dc2626; 
+            --success: #16a34a; 
+            --warning: #f59e0b; 
+            --bg: #f3f4f6; 
+            --text: #1f2937; 
+        }
         body { font-family:system-ui,-apple-system,sans-serif; background:var(--bg); color:var(--text); margin:0; display:flex; flex-direction:column; min-height:100vh; }
         .screen { display:none; padding:20px; max-width:800px; margin:0 auto; width:100%; box-sizing:border-box; }
         .screen.active { display:block; }
-        .hero { text-align:center; padding:40px 20px; }
-        h1 { color:var(--primary); margin-bottom:10px; }
-        .grid-temas { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:15px; margin-bottom:30px; }
-        .btn { background:#fff; border:2px solid var(--primary); color:var(--primary); padding:15px; border-radius:12px; font-weight:600; cursor:pointer; text-align:center; transition:0.2s; }
+        .hero { text-align:center; padding:30px 20px; }
+        h1 { color:var(--primary); margin-bottom:5px; }
+        h2 { font-size:1.1rem; color:#4b5563; margin-top:30px; border-bottom: 2px solid #e5e7eb; padding-bottom: 10px; }
+        
+        /* Estilos para la nueva zona de examen */
+        .section-exam {
+            background: #e0e7ff;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 30px;
+            border: 2px solid var(--secondary);
+        }
+        .section-exam h2 { color: var(--secondary); border-color: #c7d2fe; margin-top: 0; }
+
+        .grid-temas { display:grid; grid-template-columns:repeat(auto-fit,minmax(80px,1fr)); gap:10px; margin-bottom:20px; }
+        
+        .btn { background:#fff; border:2px solid var(--primary); color:var(--primary); padding:10px; border-radius:10px; font-weight:600; cursor:pointer; text-align:center; transition:0.2s; font-size: 0.9rem; }
         .btn:hover { background:var(--primary); color:#fff; transform:translateY(-2px); }
-        .btn-large { width:100%; background:var(--primary); color:#fff; font-size:1.2rem; padding:20px; margin-bottom:15px; }
+        
+        /* Botones específicos de examen */
+        .btn-exam { border-color: var(--secondary); color: var(--secondary); }
+        .btn-exam:hover { background: var(--secondary); color: white; }
+
+        .btn-large { width:100%; background:var(--primary); color:#fff; font-size:1.1rem; padding:15px; margin-bottom:15px; border:none; border-radius: 12px; cursor: pointer; }
+        .btn-large-exam { background: var(--secondary); }
+        
         .btn-home { background:#e5e7eb; border:none; padding:5px 10px; border-radius:6px; cursor:pointer; font-size:0.9rem; color:#374151; }
         .btn-terminate { width:100%; background:var(--warning); color:#fff; border:none; padding:12px; border-radius:12px; font-weight:bold; margin-top:15px; cursor:pointer; font-size:1rem; }
         .btn-terminate:hover { background:#d97706; }
+
         .topic-selector { background:#fff; padding:15px; border-radius:8px; display:grid; grid-template-columns:repeat(auto-fill,minmax(100px,1fr)); gap:10px; margin-bottom:20px; }
         .topic-check label { display:flex; align-items:center; gap:8px; cursor:pointer; font-size:0.9rem; }
+        
         .test-header { display:flex; justify-content:space-between; align-items:center; background:#fff; padding:15px; border-radius:12px; margin-bottom:20px; position:sticky; top:10px; z-index:10; box-shadow:0 2px 5px rgba(0,0,0,0.1); }
+        
         .progress-bar { height:6px; background:#e5e7eb; border-radius:3px; margin-bottom:20px; overflow:hidden; }
         .progress-fill { height:100%; background:var(--primary); width:0%; transition:width 0.3s; }
+        
         .question-card { background:#fff; padding:25px; border-radius:16px; margin-bottom:20px; box-shadow:0 4px 6px rgba(0,0,0,0.05); }
         .question-text { font-size:1.1rem; font-weight:600; margin-bottom:20px; line-height:1.5; }
         .multi-tag { font-size:0.8rem; background:#eff6ff; color:var(--primary); padding:4px 8px; border-radius:4px; margin-left:10px; border:1px solid #bfdbfe; display:inline-block; }
+        
         .options-grid { display:flex; flex-direction:column; gap:10px; }
         .option-btn { padding:15px; border:2px solid #e5e7eb; background:#fff; border-radius:8px; cursor:pointer; display:flex; gap:10px; transition:0.2s; }
         .option-btn:hover { border-color:var(--primary); background:#f8fafc; }
         .option-btn.selected { border-color:var(--primary); background:#eff6ff; font-weight:600; }
         .opt-letter { font-weight:bold; color:#6b7280; min-width:25px; }
+        
         .nav-buttons { display:flex; justify-content:space-between; gap:10px; }
+        
         .score-card { background:#fff; padding:40px; border-radius:20px; text-align:center; box-shadow:0 10px 25px rgba(0,0,0,0.1); }
         .score-number { font-size:4rem; font-weight:800; color:var(--primary); margin:10px 0; }
         .result-badge { display:inline-block; padding:8px 20px; border-radius:50px; font-weight:bold; font-size:1.2rem; margin-bottom:20px; }
@@ -41,7 +76,7 @@
         .stat-box { background:#f9fafb; padding:15px; border-radius:10px; }
         .stat-val { font-size:1.5rem; font-weight:bold; }
 
-        /* ESTILOS NUEVOS: NAVEGACIÓN Y REVISIÓN */
+        /* NAVEGACIÓN Y REVISIÓN */
         .nav-grid { display:flex; flex-wrap:wrap; gap:5px; margin-bottom:15px; justify-content:center; }
         .nav-num { width:30px; height:30px; display:flex; align-items:center; justify-content:center; border-radius:6px; background:#e5e7eb; color:#666; font-size:0.8rem; cursor:pointer; font-weight:600; }
         .nav-num.active { background:var(--primary); color:white; transform:scale(1.1); box-shadow:0 2px 5px rgba(37,99,235,0.3); }
@@ -66,12 +101,27 @@
         <h1>TIPO TEST IISSI</h1>
         <p>Ingeniería del Software</p>
     </div>
-    <button class="btn btn-large" onclick="iniciarTestGlobal()">🚀 SIMULACRO GLOBAL (20 Preguntas)</button>
-    <h2>Practicar por Temas</h2>
-    <div class="grid-temas" id="grid-temas">Cargando...</div>
-    <h2>Test Personalizado</h2>
-    <div class="topic-selector" id="multi-selector">Cargando...</div>
-    <button class="btn" style="width:100%" onclick="iniciarTestMulti()">Comenzar Personalizado</button>
+
+    <button class="btn btn-large" onclick="iniciarTestGlobal(DB)">🚀 SIMULACRO TEMARIO (20 Pregs)</button>
+    
+    <h2>Practicar Temario</h2>
+    <div class="grid-temas" id="grid-temas-normal">Cargando...</div>
+    
+    <div style="text-align:left; margin-top:20px;">
+        <p style="font-size:0.9rem; color:#666; margin-bottom:5px;">Personalizado (Temario):</p>
+        <div class="topic-selector" id="multi-selector-normal">Cargando...</div>
+        <button class="btn" style="width:100%" onclick="iniciarTestMulti(DB, 'multi-selector-normal')">Comenzar Personalizado</button>
+    </div>
+
+    <div class="section-exam">
+        <h2>📂 Zona de Exámenes Anteriores</h2>
+        <p style="font-size:0.9rem; color:#555; margin-bottom:15px;">Preguntas oficiales de años pasados</p>
+        
+        <button class="btn btn-large btn-large-exam" onclick="iniciarTestGlobal(DB_EXAMEN)">📝 SIMULACRO EXAMEN REAL</button>
+        
+        <p style="font-size:0.9rem; font-weight:bold; color:var(--secondary); margin-bottom:10px;">Repaso Exámenes por Temas:</p>
+        <div class="grid-temas" id="grid-temas-examen">Cargando...</div>
+    </div>
 </div>
 
 <div id="test-screen" class="screen">
@@ -82,7 +132,6 @@
     </div>
     
     <div class="nav-grid" id="nav-grid"></div>
-
     <div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
     
     <div class="question-card">
@@ -119,49 +168,107 @@
 <script src="preguntas.js"></script>
 
 <script>
+// Detector de errores
 window.onerror = function(msg, url, line) {
-   if(msg.includes("DB is not defined")) {
-       document.getElementById('grid-temas').innerHTML = "<p style='color:red; font-weight:bold'>ERROR: No se carga 'preguntas.js'. Revisa que esté subido.</p>";
+   if(msg.includes("DB is not defined") || msg.includes("DB_EXAMEN is not defined")) {
+       alert("ERROR: No se ha podido cargar una de las bases de datos desde 'preguntas.js'.\nVerifica que existan 'const DB' y 'const DB_EXAMEN'.");
    }
 };
 
 let preguntasActuales=[], respuestasUsuario={}, indiceActual=0, timerInterval, segundosRestantes=1800, modoExamen=false;
 
-const temasContainer = document.getElementById('grid-temas');
-const multiContainer = document.getElementById('multi-selector');
+// Elementos DOM
+const gridNormal = document.getElementById('grid-temas-normal');
+const selectorNormal = document.getElementById('multi-selector-normal');
+const gridExamen = document.getElementById('grid-temas-examen');
 
 function initApp() {
-    temasContainer.innerHTML = ''; multiContainer.innerHTML = '';
-    if (typeof DB === 'undefined') return;
+    // Verificar bases de datos
+    const tieneDB = typeof DB !== 'undefined';
+    const tieneExamen = typeof DB_EXAMEN !== 'undefined';
 
-    const temasDisponibles = [...new Set(DB.map(i => i.t))].sort((a,b) => a-b);
-    if(temasDisponibles.length===0){
-        temasContainer.innerHTML="<p>No hay preguntas cargadas.</p>";
+    // 1. Cargar Temas Normales
+    if(tieneDB) {
+        renderMenu(DB, gridNormal, selectorNormal, false);
     } else {
-        temasDisponibles.forEach(t => {
-            let btn=document.createElement('div'); btn.className='btn'; btn.innerHTML=`<span>Tema ${t}</span>`;
-            btn.onclick=()=>iniciarTestTema(t); temasContainer.appendChild(btn);
-            let label=document.createElement('label'); label.className='topic-check';
-            label.innerHTML=`<input type="checkbox" value="${t}" checked> Tema ${t}`; multiContainer.appendChild(label);
-        });
+        gridNormal.innerHTML = "<p>No se encontró la base de datos de Temario.</p>";
+    }
+    
+    // 2. Cargar Temas de Examen
+    if(tieneExamen) {
+        renderMenu(DB_EXAMEN, gridExamen, null, true); // null porque no hay multi-selector para exámenes (por ahora)
+    } else {
+        gridExamen.innerHTML = "<p>No se encontró la base de datos de Exámenes.</p>";
     }
 }
 
+// Función genérica para pintar botones de temas
+function renderMenu(database, containerGrid, containerMulti, esExamen) {
+    containerGrid.innerHTML = ''; 
+    if(containerMulti) containerMulti.innerHTML = '';
+
+    if (!database || database.length === 0) {
+        containerGrid.innerHTML = "<p style='grid-column:1/-1; color:#666; font-size:0.8rem;'>Aún no hay preguntas cargadas.</p>";
+        return;
+    }
+
+    // Detectar qué temas existen en esa base de datos
+    const temasDisponibles = [...new Set(database.map(i => i.t))].sort((a,b) => a-b);
+
+    temasDisponibles.forEach(t => {
+        // Botón
+        let btn = document.createElement('div');
+        btn.className = esExamen ? 'btn btn-exam' : 'btn';
+        btn.innerHTML = `<span>Tema ${t}</span>`;
+        // IMPORTANTE: Pasamos la base de datos correspondiente a la función
+        btn.onclick = () => iniciarTestTema(database, t);
+        containerGrid.appendChild(btn);
+
+        // Checkbox (solo si el contenedor existe)
+        if(containerMulti) {
+            let label = document.createElement('label');
+            label.className = 'topic-check';
+            label.innerHTML = `<input type="checkbox" value="${t}" checked> Tema ${t}`;
+            containerMulti.appendChild(label);
+        }
+    });
+}
+
 function shuffle(array){ return array.sort(()=>Math.random()-0.5); }
-function getPreguntas(filtroFn, cant=20){
-    let pool=DB.filter(filtroFn);
-    if(pool.length<cant) return shuffle(pool).map((p,i)=>({...p, uid:i}));
+
+// Ahora getPreguntas recibe la base de datos origen
+function getPreguntas(sourceDB, filtroFn, cant=20){
+    let pool = sourceDB.filter(filtroFn);
+    if(pool.length < cant) return shuffle(pool).map((p,i)=>({...p, uid:i}));
     return shuffle(pool).slice(0,cant).map((p,i)=>({...p, uid:i}));
 }
 
-function iniciarTestGlobal(){ preguntasActuales=getPreguntas(p=>true,20); configurarTest(true); }
-function iniciarTestTema(t){ preguntasActuales=getPreguntas(p=>p.t===t,50); configurarTest(false); }
-function iniciarTestMulti(){
-    const checks=document.querySelectorAll('#multi-selector input:checked');
-    const ids=Array.from(checks).map(c=>parseInt(c.value));
-    if(ids.length===0) return alert("Selecciona tema");
-    preguntasActuales=getPreguntas(p=>ids.includes(p.t),20); configurarTest(true);
+// --- MODOS DE INICIO ---
+
+// Simulacro: Recibe qué DB usar (DB normal o DB_EXAMEN)
+function iniciarTestGlobal(database) {
+    if(typeof database === 'undefined' || database.length === 0) return alert("No hay preguntas en esta base de datos.");
+    preguntasActuales = getPreguntas(database, p => true, 20);
+    configurarTest(true);
 }
+
+// Por Tema: Recibe qué DB usar y qué tema
+function iniciarTestTema(database, t) {
+    preguntasActuales = getPreguntas(database, p => p.t === t, 50);
+    configurarTest(false);
+}
+
+// Personalizado: Recibe qué DB usar y de dónde leer los checkboxes
+function iniciarTestMulti(database, selectorId) {
+    const checks = document.querySelectorAll(`#${selectorId} input:checked`);
+    const ids = Array.from(checks).map(c => parseInt(c.value));
+    if(ids.length === 0) return alert("Selecciona al menos un tema");
+    
+    preguntasActuales = getPreguntas(database, p => ids.includes(p.t), 20);
+    configurarTest(true);
+}
+
+// --- CONFIGURACIÓN Y EJECUCIÓN DEL TEST ---
 
 function configurarTest(esExamen){
     if(preguntasActuales.length===0) return alert("Sin preguntas.");
@@ -173,14 +280,11 @@ function configurarTest(esExamen){
     document.getElementById('total-q').innerText=preguntasActuales.length;
     document.getElementById('timer').style.display = esExamen ? 'block' : 'none';
     
-    // Generar navegación
     renderNavigation();
-
     if(esExamen) startTimer();
     renderPregunta();
 }
 
-// NUEVO: Renderiza los cuadraditos de navegación
 function renderNavigation() {
     const navGrid = document.getElementById('nav-grid');
     navGrid.innerHTML = '';
@@ -188,15 +292,12 @@ function renderNavigation() {
         const box = document.createElement('div');
         box.className = 'nav-num';
         box.innerText = idx + 1;
-        
-        // Estilos según estado
         if (idx === indiceActual) box.classList.add('active');
         if (respuestasUsuario[p.uid] && respuestasUsuario[p.uid].length > 0) box.classList.add('answered');
-        
         box.onclick = () => {
             indiceActual = idx;
             renderPregunta();
-            renderNavigation(); // Actualizar activos
+            renderNavigation();
         };
         navGrid.appendChild(box);
     });
@@ -229,7 +330,6 @@ function renderPregunta(){
         btn.innerHTML=`<span class="opt-letter">${letras[idx]})</span><span>${op}</span>`;
         if(respuestasUsuario[p.uid].includes(idx)) btn.classList.add('selected');
         
-        // Colores en modo practica
         if(!modoExamen && !esMulti && respuestasUsuario[p.uid].length>0){
             if(idx===p.c) { btn.style.borderColor='var(--success)'; btn.style.background='#dcfce7'; }
             else if(respuestasUsuario[p.uid].includes(idx)) { btn.style.borderColor='var(--danger)'; btn.style.background='#fee2e2'; }
@@ -237,24 +337,18 @@ function renderPregunta(){
         btn.onclick=()=>seleccionarOpcion(idx,esMulti); cont.appendChild(btn);
     });
     
-    // Gestión botones
     document.getElementById('btn-prev').style.display = (indiceActual === 0) ? 'none' : 'block';
     document.getElementById('btn-next').style.display = (indiceActual === preguntasActuales.length-1) ? 'none' : 'block';
-    
-    // Actualizar también la navegación superior
     renderNavigation();
 }
 
 function seleccionarOpcion(idx,esMulti){
     const p=preguntasActuales[indiceActual];
     let sel=respuestasUsuario[p.uid];
-    
     if(!modoExamen && !esMulti && sel.length>0) return;
-
     if(esMulti){
         if(sel.includes(idx)) sel=sel.filter(i=>i!==idx); else sel.push(idx);
     } else { sel=[idx]; }
-    
     respuestasUsuario[p.uid]=sel; 
     renderPregunta();
 }
@@ -272,46 +366,32 @@ function arraysIguales(a,b){
     return true;
 }
 
-// NUEVO: Genera la revisión detallada al final
 function generarRevision() {
     const container = document.getElementById('review-container');
     container.innerHTML = '<h3>Revisión de respuestas:</h3>';
-    
     preguntasActuales.forEach((p, index) => {
         let userAns = respuestasUsuario[p.uid] || [];
         let isCorrect = false;
-        
-        // Comprobar si acertó
         if(userAns.length > 0) {
             if (Array.isArray(p.c)) isCorrect = arraysIguales(userAns, p.c);
             else isCorrect = (userAns[0] === p.c);
         }
-
-        // Crear tarjeta de pregunta
         const card = document.createElement('div');
         card.className = `review-item ${isCorrect ? 'is-correct' : 'is-wrong'}`;
-        
         let html = `<span class="review-q-text">${index+1}. ${p.q}</span>`;
-        
-        // Renderizar opciones con colores
         const letras = ['A','B','C','D','E','F'];
         p.o.forEach((op, idx) => {
             let clase = 'review-opt';
-            let extra = '';
-            
             const fueSeleccionada = userAns.includes(idx);
             const esLaCorrecta = Array.isArray(p.c) ? p.c.includes(idx) : (p.c === idx);
-
             if (esLaCorrecta) {
-                clase += ' correct-answer'; // Verde siempre la correcta
-                if (fueSeleccionada) clase += ' user-selected-correct'; // Verde subrayado si acertó
+                clase += ' correct-answer';
+                if (fueSeleccionada) clase += ' user-selected-correct';
             } else if (fueSeleccionada) {
-                clase += ' user-selected-wrong'; // Rojo si falló
+                clase += ' user-selected-wrong';
             }
-
             html += `<div class="${clase}"><b>${letras[idx]})</b> ${op}</div>`;
         });
-
         card.innerHTML = html;
         container.appendChild(card);
     });
@@ -342,8 +422,6 @@ function finalizarTest(){
     const b=document.getElementById('result-badge');
     if(nota>=5){ b.innerText="APTO"; b.className="result-badge apto"; }
     else { b.innerText="NO APTO"; b.className="result-badge no-apto"; }
-
-    // Generar la revisión visual
     generarRevision();
 }
 
