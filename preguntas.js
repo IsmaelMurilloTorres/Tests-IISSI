@@ -608,7 +608,7 @@ const DB = [
       "Cuando el jefe quiera"
     ],
     c: 3
-  }
+  },
   {
     t: 3,
     q: "Un sistema es un conjunto de componentes que interactúan entre sí para:",
@@ -1024,7 +1024,7 @@ const DB = [
       "Encriptarlos siempre"
     ],
     c: 2
-  }
+  },
   {
     t: 4,
     q: "¿Qué es el 'dominio del problema'?",
@@ -1440,7 +1440,7 @@ const DB = [
       "Una hoja de cálculo"
     ],
     c: 0
-  }
+  },
   {
     t: 5,
     q: "Independientemente del ciclo de vida, ¿en qué fase se utiliza el modelado conceptual?",
@@ -1856,7 +1856,7 @@ const DB = [
       "1..* significa que puede ser cero"
     ],
     c: [0, 1, 2, 4]
-  }
+  },
   {
     t: 6,
     q: "¿Qué es un Sistema de Gestión de Base de Datos (SGBD)?",
@@ -2272,7 +2272,7 @@ const DB = [
       "No, pero viola la integridad de entidad"
     ],
     c: 1
-  }
+  },
   {
     t: 7,
     q: "La calidad de un modelo relacional depende, entre otros factores, de:",
@@ -2688,7 +2688,7 @@ const DB = [
       "No tienen orden"
     ],
     c: 1
-  }
+  },
   {
     t: 8,
     q: "¿Qué significan las siglas MDD en el contexto del tema?",
@@ -3104,7 +3104,7 @@ const DB = [
       "La fecha de caducidad"
     ],
     c: 1
-  }
+  },
   {
     t: 9,
     q: "¿Qué es el Álgebra Relacional (AR)?",
