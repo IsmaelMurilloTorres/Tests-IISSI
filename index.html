@@ -5,32 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Autoescuela ISSI</title>
     <style>
-        :root { --primary:#2563eb; --danger:#dc2626; --success:#16a34a; --bg:#f3f4f6; --text:#1f2937; }
+        :root { --primary:#2563eb; --danger:#dc2626; --success:#16a34a; --warning:#f59e0b; --bg:#f3f4f6; --text:#1f2937; }
         body { font-family:system-ui,-apple-system,sans-serif; background:var(--bg); color:var(--text); margin:0; display:flex; flex-direction:column; min-height:100vh; }
-        .screen { display:none; padding:20px; max-width:800px; margin:0 auto; width:100%; }
+        .screen { display:none; padding:20px; max-width:800px; margin:0 auto; width:100%; box-sizing:border-box; }
         .screen.active { display:block; }
         .hero { text-align:center; padding:40px 20px; }
-        h1 { color:var(--primary); }
+        h1 { color:var(--primary); margin-bottom:10px; }
         .grid-temas { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:15px; margin-bottom:30px; }
-        .btn { background:#fff; border:2px solid var(--primary); color:var(--primary); padding:15px; border-radius:12px; font-weight:600; cursor:pointer; text-align:center; }
-        .btn:hover { background:var(--primary); color:#fff; }
+        .btn { background:#fff; border:2px solid var(--primary); color:var(--primary); padding:15px; border-radius:12px; font-weight:600; cursor:pointer; text-align:center; transition:0.2s; }
+        .btn:hover { background:var(--primary); color:#fff; transform:translateY(-2px); }
         .btn-large { width:100%; background:var(--primary); color:#fff; font-size:1.2rem; padding:20px; margin-bottom:15px; }
+        .btn-home { background:#e5e7eb; border:none; padding:5px 10px; border-radius:6px; cursor:pointer; font-size:0.9rem; color:#374151; }
+        .btn-terminate { width:100%; background:var(--warning); color:#fff; border:none; padding:12px; border-radius:12px; font-weight:bold; margin-top:15px; cursor:pointer; font-size:1rem; }
+        .btn-terminate:hover { background:#d97706; }
         .topic-selector { background:#fff; padding:15px; border-radius:8px; display:grid; grid-template-columns:repeat(auto-fill,minmax(100px,1fr)); gap:10px; margin-bottom:20px; }
+        .topic-check label { display:flex; align-items:center; gap:8px; cursor:pointer; font-size:0.9rem; }
         .test-header { display:flex; justify-content:space-between; align-items:center; background:#fff; padding:15px; border-radius:12px; margin-bottom:20px; position:sticky; top:10px; z-index:10; box-shadow:0 2px 5px rgba(0,0,0,0.1); }
         .progress-bar { height:6px; background:#e5e7eb; border-radius:3px; margin-bottom:20px; overflow:hidden; }
         .progress-fill { height:100%; background:var(--primary); width:0%; transition:width 0.3s; }
         .question-card { background:#fff; padding:25px; border-radius:16px; margin-bottom:20px; box-shadow:0 4px 6px rgba(0,0,0,0.05); }
-        .question-text { font-size:1.1rem; font-weight:600; margin-bottom:20px; }
-        .multi-tag { font-size:0.8rem; background:#eff6ff; color:var(--primary); padding:4px 8px; border-radius:4px; margin-left:10px; border:1px solid #bfdbfe; }
+        .question-text { font-size:1.1rem; font-weight:600; margin-bottom:20px; line-height:1.5; }
+        .multi-tag { font-size:0.8rem; background:#eff6ff; color:var(--primary); padding:4px 8px; border-radius:4px; margin-left:10px; border:1px solid #bfdbfe; display:inline-block; }
         .options-grid { display:flex; flex-direction:column; gap:10px; }
-        .option-btn { padding:15px; border:2px solid #e5e7eb; background:#fff; border-radius:8px; cursor:pointer; display:flex; gap:10px; }
+        .option-btn { padding:15px; border:2px solid #e5e7eb; background:#fff; border-radius:8px; cursor:pointer; display:flex; gap:10px; transition:0.2s; }
         .option-btn:hover { border-color:var(--primary); background:#f8fafc; }
         .option-btn.selected { border-color:var(--primary); background:#eff6ff; font-weight:600; }
         .opt-letter { font-weight:bold; color:#6b7280; min-width:25px; }
         .nav-buttons { display:flex; justify-content:space-between; gap:10px; }
-        .score-card { background:#fff; padding:40px; border-radius:20px; text-align:center; }
+        .score-card { background:#fff; padding:40px; border-radius:20px; text-align:center; box-shadow:0 10px 25px rgba(0,0,0,0.1); }
         .score-number { font-size:4rem; font-weight:800; color:var(--primary); margin:10px 0; }
-        .result-badge { display:inline-block; padding:8px 20px; border-radius:50px; font-weight:bold; margin-bottom:20px; }
+        .result-badge { display:inline-block; padding:8px 20px; border-radius:50px; font-weight:bold; font-size:1.2rem; margin-bottom:20px; }
         .apto { background:#dcfce7; color:var(--success); }
         .no-apto { background:#fee2e2; color:var(--danger); }
         .stats-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:15px; margin-top:30px; }
@@ -41,12 +45,13 @@
 <body>
 
 <div id="home-screen" class="screen active">
-    <div class="hero"><h1>🎓 Autoescuela ISSI</h1><p>Ingeniería del Software</p></div>
+    <div class="hero">
+        <h1>🎓 Autoescuela ISSI</h1>
+        <p>Ingeniería del Software</p>
+    </div>
     <button class="btn btn-large" onclick="iniciarTestGlobal()">🚀 SIMULACRO GLOBAL (20 Preguntas)</button>
-    
     <h2>Practicar por Temas</h2>
-    <div class="grid-temas" id="grid-temas">Cargando temas...</div>
-    
+    <div class="grid-temas" id="grid-temas">Cargando...</div>
     <h2>Test Personalizado</h2>
     <div class="topic-selector" id="multi-selector">Cargando...</div>
     <button class="btn" style="width:100%" onclick="iniciarTestMulti()">Comenzar Personalizado</button>
@@ -54,7 +59,8 @@
 
 <div id="test-screen" class="screen">
     <div class="test-header">
-        <div>Pregunta <span id="current-q">1</span>/<span id="total-q">20</span></div>
+        <button class="btn-home" onclick="irInicio()">🏠 Menú</button>
+        <div><span id="current-q">1</span>/<span id="total-q">20</span></div>
         <div id="timer" style="color:var(--danger);font-weight:bold">30:00</div>
     </div>
     <div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
@@ -68,8 +74,8 @@
         <button class="btn" id="btn-prev" onclick="navPregunta(-1)" style="display:none">Anterior</button>
         <div style="flex:1"></div>
         <button class="btn" id="btn-next" onclick="navPregunta(1)">Siguiente</button>
-        <button class="btn" id="btn-finish" onclick="finalizarTest()" style="display:none; background:var(--danger); color:#fff; border-color:var(--danger)">FINALIZAR EXAMEN</button>
     </div>
+    <button class="btn-terminate" onclick="if(confirm('¿Seguro que quieres terminar ya?')) finalizarTest()">🏁 Corregir Test Ahora</button>
 </div>
 
 <div id="result-screen" class="screen">
@@ -78,13 +84,11 @@
         <div id="result-badge" class="result-badge">---</div>
         <div>Nota final:</div>
         <div class="score-number" id="final-score">0.0</div>
-        
         <div class="stats-grid">
             <div class="stat-box"><div class="stat-val" id="stat-ok" style="color:var(--success)">0</div><div>Aciertos</div></div>
             <div class="stat-box"><div class="stat-val" id="stat-fail" style="color:var(--danger)">0</div><div>Fallos</div></div>
             <div class="stat-box"><div class="stat-val" id="stat-blank">0</div><div>Blanco</div></div>
         </div>
-        
         <button class="btn btn-large" style="margin-top:30px;" onclick="irInicio()">Volver al Inicio</button>
     </div>
 </div>
@@ -92,26 +96,29 @@
 <script src="preguntas.js"></script>
 
 <script>
-// Detector de errores
+// DETECTOR DE ERRORES: Si preguntas.js falla, avisa.
 window.onerror = function(msg, url, line) {
-   alert("ERROR DE PROGRAMACIÓN:\n" + msg + "\nLínea: " + line);
+   // Si el error es "DB is not defined", es porque falló la carga de preguntas.js
+   if(msg.includes("DB is not defined")) {
+       document.getElementById('grid-temas').innerHTML = "<p style='color:red; font-weight:bold'>ERROR CRÍTICO: No se ha podido cargar el archivo 'preguntas.js'.<br>Asegúrate de que está subido en la misma carpeta y no tiene errores de sintaxis.</p>";
+   }
 };
 
-// Variables globales
 let preguntasActuales=[], respuestasUsuario={}, indiceActual=0, timerInterval, segundosRestantes=1800, modoExamen=false;
 
-// Elementos DOM
 const temasContainer = document.getElementById('grid-temas');
 const multiContainer = document.getElementById('multi-selector');
 
 function initApp() {
-    // Verificar si DB existe
+    temasContainer.innerHTML = ''; multiContainer.innerHTML = '';
+    
+    // Verificación de seguridad
     if (typeof DB === 'undefined') {
-        temasContainer.innerHTML = "<p style='color:red'>Error: No se ha encontrado el archivo 'preguntas.js' o está vacío.</p>";
+        // El onerror saltará, pero por si acaso:
+        console.error("DB no está definida. Revisa preguntas.js");
         return;
     }
 
-    temasContainer.innerHTML = ''; multiContainer.innerHTML = '';
     const temasDisponibles = [...new Set(DB.map(i => i.t))].sort((a,b) => a-b);
 
     if(temasDisponibles.length===0){
@@ -127,10 +134,8 @@ function initApp() {
 }
 
 function shuffle(array){ return array.sort(()=>Math.random()-0.5); }
-
 function getPreguntas(filtroFn, cant=20){
     let pool=DB.filter(filtroFn);
-    // Si hay menos preguntas de las pedidas, las usamos todas
     if(pool.length<cant) return shuffle(pool).map((p,i)=>({...p, uid:i}));
     return shuffle(pool).slice(0,cant).map((p,i)=>({...p, uid:i}));
 }
@@ -151,7 +156,6 @@ function configurarTest(esExamen){
     document.getElementById('result-screen').classList.remove('active');
     document.getElementById('test-screen').classList.add('active');
     document.getElementById('btn-prev').style.display='block';
-    document.getElementById('btn-finish').style.display='none';
     document.getElementById('btn-next').style.display='block';
     document.getElementById('total-q').innerText=preguntasActuales.length;
     document.getElementById('timer').style.display = esExamen ? 'block' : 'none';
@@ -183,8 +187,6 @@ function renderPregunta(){
         const btn=document.createElement('div'); btn.className='option-btn';
         btn.innerHTML=`<span class="opt-letter">${letras[idx]})</span><span>${op}</span>`;
         if(respuestasUsuario[p.uid].includes(idx)) btn.classList.add('selected');
-        
-        // Colores en modo practica
         if(!modoExamen && !esMulti && respuestasUsuario[p.uid].length>0){
             if(idx===p.c) { btn.style.borderColor='var(--success)'; btn.style.background='#dcfce7'; }
             else if(respuestasUsuario[p.uid].includes(idx)) { btn.style.borderColor='var(--danger)'; btn.style.background='#fee2e2'; }
@@ -192,23 +194,18 @@ function renderPregunta(){
         btn.onclick=()=>seleccionarOpcion(idx,esMulti); cont.appendChild(btn);
     });
     
-    // Botones navegación
+    // Gestión visual de botones
     if(indiceActual===preguntasActuales.length-1){
         document.getElementById('btn-next').style.display='none';
-        document.getElementById('btn-finish').style.display='block';
     } else {
         document.getElementById('btn-next').style.display='block';
-        document.getElementById('btn-finish').style.display='none';
     }
 }
 
 function seleccionarOpcion(idx,esMulti){
     const p=preguntasActuales[indiceActual];
     let sel=respuestasUsuario[p.uid];
-    
-    // Bloquear en modo práctica si ya respondió (para preguntas simples)
     if(!modoExamen && !esMulti && sel.length>0) return;
-
     if(esMulti){
         if(sel.includes(idx)) sel=sel.filter(i=>i!==idx); else sel.push(idx);
     } else { sel=[idx]; }
@@ -257,10 +254,11 @@ function finalizarTest(){
 function irInicio(){
     document.getElementById('result-screen').classList.remove('active');
     document.getElementById('home-screen').classList.add('active');
+    initApp(); // Recargar menú por si acaso
 }
 
-// Arrancar App
-initApp();
+// Arrancar App al cargar la página
+window.onload = initApp;
 </script>
 </body>
 </html>
