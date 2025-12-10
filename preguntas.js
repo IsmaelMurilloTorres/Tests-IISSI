@@ -1,4 +1,3 @@
-
 const DB = [
   // --- TEMA 1 (Copiado de tu lista) ---
   {
@@ -3522,3 +3521,2172 @@ const DB = [
     c: 2
   }
 ]; // FINNNNNNN
+
+
+const DB_EXAMEN = [
+  // --- TEMA 1: INTRODUCCIÓN A LA INGENIERÍA DEL SOFTWARE ---
+  {
+    t: 1,
+    q: "Según la definición del glosario de IEEE (610.12), ¿cuál de los siguientes es un componente clave del enfoque de la Ingeniería del Software?",
+    o: [
+      "La aplicación de métodos exclusivamente intuitivos para la fase de pruebas.",
+      "La generación de código fuente sin la necesidad de documentación formal.",
+      "La aplicación de un enfoque sistemático, disciplinado y cuantificable para el desarrollo, operación y mantenimiento del software.",
+      "El estudio de los enfoques no ingenieriles para la solución de problemas.",
+      "El desarrollo de software sin considerar las limitaciones de tiempo o coste.",
+      "La priorización de la estética de la interfaz de usuario sobre la funcionalidad del sistema."
+    ],
+    c: 2 // C
+  },
+  {
+    t: 1,
+    q: "¿Cuál es una característica que distingue al software del hardware respecto a su durabilidad?",
+    o: [
+      "El software se estropea siguiendo la curva de la bañera, igual que el hardware.",
+      "El software se estropea con el tiempo, lo que requiere mantenimiento preventivo.",
+      "El software es intangible y no se estropea, aunque puede quedar obsoleto.",
+      "El software real tiene una curva de fallos idealmente decreciente con el tiempo.",
+      "El software tiene una tasa de fallos que aumenta constantemente debido al desgaste de sus componentes.",
+      "El software se fabrica, no se desarrolla, lo que garantiza su durabilidad física."
+    ],
+    c: 2 // C
+  },
+  {
+    t: 1,
+    q: "La crisis del software, que motivó la celebración de la Software Engineering Conference (SEC) de la OTAN en 1968, se caracterizó, entre otros problemas, por:",
+    o: [
+      "Exceso de personal competente y escasez de requisitos claros.",
+      "Sobrecostes, retrasos, baja calidad y dificultad en el mantenimiento del software.",
+      "Una sobreabundancia de apoyo directivo y expectativas demasiado realistas.",
+      "La falta de necesidad de un ciclo de vida definido para el software.",
+      "El término 'Ingeniería del Software' aún no se había acuñado.",
+      "La gestión exclusiva de los proyectos mediante metodologías ágiles no planificadas."
+    ],
+    c: 1 // B
+  },
+  {
+    t: 1,
+    q: "De acuerdo con el Ciclo de Deming (PDCA), ¿qué se realiza en la etapa Check de un proyecto?",
+    o: [
+      "La aplicación de mejoras al proceso para atajar problemas (Act).",
+      "La ejecución de los objetivos establecidos (Do).",
+      "La definición de objetivos y procesos (Plan).",
+      "Evaluar resultados de la fase 'Do' y comparar con lo esperado para identificar desviaciones.",
+      "La entrega final del producto ejecutable al cliente.",
+      "El diseño del software a bajo nivel (Coding)."
+    ],
+    c: 3 // D
+  },
+  {
+    t: 1,
+    q: "¿Cuál es el rol dentro de un proyecto software responsable de la financiación del proyecto, con capacidad ejecutiva para tomar decisiones sobre el mismo, y que suele tener una visión global del modelo de negocio?",
+    o: [
+      "Ingeniero de requisitos.",
+      "Director de proyecto.",
+      "Equipo de desarrollo.",
+      "Usuario.",
+      "Responsable TIC del Cliente.",
+      "Cliente."
+    ],
+    c: 5 // F
+  },
+  {
+    t: 1,
+    q: "¿Cuál es el tipo de mantenimiento que se dedica a incorporar nuevos requisitos o cambios en los ya existentes, y que representa el mayor porcentaje de coste de mantenimiento (60%)?",
+    o: [
+      "Mantenimiento Correctivo.",
+      "Mantenimiento Adaptativo.",
+      "Mantenimiento Perfectivo.",
+      "Mantenimiento Evolutivo.",
+      "Mantenimiento de Producción.",
+      "Mantenimiento Preventivo."
+    ],
+    c: 3 // D
+  },
+  {
+    t: 1,
+    q: "La norma internacional ISO 12207 se centra en:",
+    o: [
+      "El establecimiento de un vocabulario común para términos de ingeniería de software.",
+      "La provisión de requisitos mínimos y mejores prácticas para el ciclo de vida del software.",
+      "La definición de los niveles de madurez de los procesos de una organización (CMMI).",
+      "La gestión de incidencias y la restauración de la operativa normal del servicio.",
+      "La clasificación de los tipos de software por dominio de aplicación.",
+      "La especificación de las características de la calidad interna del código fuente."
+    ],
+    c: 1 // B
+  },
+  {
+    t: 1,
+    q: "Según el diagrama de costes del ciclo de vida del software, ¿qué fase consume el porcentaje más alto del coste total?",
+    o: [
+      "Specifications (5%).",
+      "Coding (5%).",
+      "Design (6%).",
+      "Integration (8%).",
+      "Unit testing (7%).",
+      "Maintenance (67%)."
+    ],
+    c: 5 // F
+  },
+  {
+    t: 1,
+    q: "Según Barry Boehm, ¿en qué fase del desarrollo de software es relativamente menos costoso corregir un error, con un factor de coste de 1x?",
+    o: [
+      "Coding.",
+      "Design.",
+      "System Testing.",
+      "Analysis (Análisis).",
+      "Acceptance Testing.",
+      "Production (Mantenimiento)."
+    ],
+    c: 3 // D
+  },
+  {
+    t: 1,
+    q: "La Ingeniería del Software, como disciplina, se basa en una serie de pilares, entre los cuales se encuentran:",
+    o: [
+      "Vocabulario, Tecnología, Herramientas, Buenas Prácticas y Metodologías.",
+      "Hardware, Sistemas Operativos, Lenguajes de Programación y Bases de Datos.",
+      "Plazos, Esfuerzo, Alcance, Coste y Calidad.",
+      "Requisitos Funcionales, Requisitos No Funcionales y Restricciones.",
+      "El Ciclo de Deming y la Norma ISO 12207.",
+      "CMMI, PMBOK, ITIL SCRUM exclusivamente."
+    ],
+    c: 0 // A
+  },
+  {
+    t: 1,
+    q: "¿Qué certificación está relacionada con la mejora de los procesos de desarrollo de productos y servicios y define niveles de madurez de los procesos de una organización?",
+    o: [
+      "ISO 12207.",
+      "Estándar ISO/IEC/IEEE 24765.",
+      "PMBOK (Project Management Body of Knowledge).",
+      "CMMI-DEV (Capability Maturity Model Integration for Development).",
+      "SCRUM.",
+      "ITIL (Information Technology Infrastructure Library)."
+    ],
+    c: 3 // D
+  },
+  {
+    t: 1,
+    q: "El software clasificado como 'A medida (proyecto interno)' o 'A medida (proyecto externo)' se clasifica según el eje de la siguiente dimensión:",
+    o: [
+      "Dominio de aplicación.",
+      "Tipo de sistema (Hardware/software o Solo software).",
+      "Tipo de desarrollo.",
+      "Tipo de proyecto (Productivo, Público, Social, De vida, Científico).",
+      "Etapa del ciclo de vida.",
+      "Nivel de madurez (CMMI)."
+    ],
+    c: 2 // C
+  },
+  {
+    t: 1,
+    q: "¿Cuál es el propósito principal del equipo de Calidad (SQA) de un proyecto software?",
+    o: [
+      "Ser el responsable de la ejecución y toma de decisiones del proyecto (Director de proyecto).",
+      "Desarrollar el código fuente y el software ejecutable (Equipo de desarrollo).",
+      "Auditar los productos del desarrollo y documentar las desviaciones o no conformidades.",
+      "Interactuar con clientes para obtener requisitos (Ingeniero de requisitos).",
+      "Proporcionar la financiación y la visión global del modelo de negocio (Cliente).",
+      "Ejecutar la fase 'Do' del Ciclo de Deming."
+    ],
+    c: 2 // C
+  },
+  {
+    t: 1,
+    q: "El mantenimiento Adaptativo del software tiene como objetivo:",
+    o: [
+      "Corregir errores del producto software (Correctivo).",
+      "Incorporar nuevos requisitos (Evolutivo).",
+      "Mejorar la calidad interna del código (Perfectivo).",
+      "Adaptar el software a cambios en el entorno tecnológico (hardware, sistema operativo, BD, etc.).",
+      "Restaurar cuanto antes la operativa normal del servicio (Gestión de incidencias).",
+      "Garantizar el cumplimiento de los estándares de desarrollo (SQA)."
+    ],
+    c: 3 // D
+  },
+  {
+    t: 1,
+    q: "Según la definición del Project Management Institute, un proyecto software es un esfuerzo temporal que se lleva a cabo para crear:",
+    o: [
+      "Una solución tecnológica sin límite de tiempo o coste.",
+      "Un producto, servicio o resultado que ya existe en el mercado.",
+      "Un producto, servicio o resultado único.",
+      "Un sistema de información o telecomunicaciones de forma exclusiva.",
+      "Un sistema basado únicamente en el software libre.",
+      "Solo software, sin componentes de hardware."
+    ],
+    c: 2 // C
+  },
+
+  // --- TEMA 2: EL CICLO DE VIDA DEL SOFTWARE ---
+  {
+    t: 2,
+    q: "Según la norma ISO 12207, ¿qué abarca el Concepto de Ciclo de Vida de un producto software?",
+    o: [
+      "Únicamente la fase de codificación y las pruebas unitarias.",
+      "La vida del sistema desde su definición hasta su retirada.",
+      "Exclusivamente la planificación detallada de actividades del proyecto.",
+      "Solo los métodos de desarrollo ágiles e incrementales.",
+      "El marco de trabajo Scrum, limitándose a los eventos y artefactos.",
+      "Los procesos de negociación contractual y la gestión de la calidad."
+    ],
+    c: 1 // B
+  },
+  {
+    t: 2,
+    q: "¿Cuál es la principal característica del Modelo de desarrollo secuencial (en cascada), típico de los métodos 'tradicionales'?",
+    o: [
+      "Se enfoca en la entrega temprana y continua de software con valor.",
+      "Las fases de requisitos, diseño, implementación y pruebas se superponen constantemente.",
+      "Las etapas están definidas y los resultados de una se utilizan como base para planificar la siguiente actividad.",
+      "El alcance del proyecto se mantiene variable, adaptándose al tiempo y coste fijos.",
+      "Está orientado al desarrollo rápido de software mediante equipos auto-organizados.",
+      "Requiere de una conversación cara a cara como el método más eficiente de comunicación."
+    ],
+    c: 2 // C
+  },
+  {
+    t: 2,
+    q: "Según el Manifiesto Ágil, ¿cuál de los siguientes es un valor que se prioriza en el desarrollo ágil?",
+    o: [
+      "Procesos y herramientas sobre individuos e interacciones.",
+      "Documentación extensiva sobre software funcionando.",
+      "Negociación contractual sobre colaboración con el cliente.",
+      "Respuesta ante el cambio sobre seguir un plan.",
+      "Alcance fijo sobre coste y tiempo variables.",
+      "Control del tiempo y coste sobre el alcance previsto."
+    ],
+    c: 3 // D
+  },
+  {
+    t: 2,
+    q: "De acuerdo con uno de los principios ágiles, ¿con qué frecuencia se entrega software funcional en los métodos ágiles?",
+    o: [
+      "Una vez al año, al finalizar todo el desarrollo.",
+      "Exclusivamente al final de la fase de pruebas de aceptación.",
+      "Frecuentemente, entre dos semanas y dos meses, con preferencia al periodo más corto.",
+      "Solo cuando el cliente lo requiere expresamente, sin periodicidad fija.",
+      "Cada 24 horas, coincidiendo con la Reunión Diaria (Daily Scrum).",
+      "Después de cada Retrospectiva de Sprint."
+    ],
+    c: 2 // C
+  },
+  {
+    t: 2,
+    q: "En el contexto de la Gestión de Proyectos 'Tradicional' (Plan-Driven Development), ¿cuáles de las tres variables (Alcance, Coste/Esfuerzo, Tiempo) se consideran inicialmente Fijas?",
+    o: [
+      "Coste y Tiempo son fijos; Alcance es variable.",
+      "Alcance y Coste son fijos; Tiempo es variable.",
+      "Alcance es fijo; Coste y Tiempo son variables.",
+      "Las tres variables son fijas y no pueden modificarse.",
+      "Las tres variables son variables y se adaptan constantemente.",
+      "Alcance y Tiempo son fijos; Coste es variable."
+    ],
+    c: 2 // C
+  },
+  {
+    t: 2,
+    q: "¿Cuál es la principal diferencia de control en la Gestión de Proyectos 'Ágil' respecto a la tradicional?",
+    o: [
+      "Se controla el tiempo y el coste, realizando actuaciones para obtener el alcance previsto.",
+      "Se define el alcance y se fijan el tiempo y el coste.",
+      "Se controla el alcance, el cual se adapta a las circunstancias del momento (cambio de requisitos) manteniendo el coste y el tiempo fijos.",
+      "El coste y el tiempo se adaptan continuamente conforme progresa el proyecto para cumplir con el alcance.",
+      "Se controla el equipo de desarrollo, el cual debe ser de gran tamaño.",
+      "Se asume que el alcance nunca tiene que cumplirse."
+    ],
+    c: 2 // C
+  },
+  {
+    t: 2,
+    q: "En el marco de trabajo Scrum, la duración de un Sprint es típicamente:",
+    o: [
+      "24 Horas.",
+      "De 2 a 4 Semanas.",
+      "8 Horas (duración de la Planificación del Sprint para un Sprint de 4 semanas).",
+      "4 Horas (duración de la Reunión de Revisión para un Sprint de 4 semanas).",
+      "Indefinida, ya que se mantiene un ritmo constante de forma indefinida.",
+      "15 Minutos (duración de la Reunión Diaria)."
+    ],
+    c: 1 // B
+  },
+  {
+    t: 2,
+    q: "¿Cuál de los siguientes no es uno de los Artefactos clave definidos en Scrum?",
+    o: [
+      "Product Backlog.",
+      "Sprint Backlog.",
+      "Incremento (implícito en el flujo, pero no listado explícitamente como los otros dos Artefactos en el material de Scrum).",
+      "Tablero Scrum (como herramienta de gestión).",
+      "Código probado y Plan de pruebas.",
+      "Product Backlog y Sprint Backlog."
+    ],
+    c: 4 // E (Nota: Aunque el tablero es una herramienta, la pregunta suele marcar "Código probado" como la opción que NO es un artefacto de los 3 principales, o D/E dependiendo del texto. Según la solución del PDF es E)
+  },
+  {
+    t: 2,
+    q: "¿Quién es el único rol en Scrum que es el responsable de maximizar el valor del producto resultante del trabajo del Equipo Scrum, y de la gestión del Product Backlog?",
+    o: [
+      "Scrum Master.",
+      "Developers.",
+      "Stakeholders.",
+      "Product Owner.",
+      "Ingeniero de Requisitos.",
+      "Director de Proyecto."
+    ],
+    c: 3 // D
+  },
+  {
+    t: 2,
+    q: "La Reunión Diaria (Daily Scrum) en Scrum tiene una duración máxima de 15 minutos, y su principal objetivo es:",
+    o: [
+      "Definir el trabajo para crear un incremento (Planificación del Sprint).",
+      "Inspeccionar el logro del objetivo del Sprint y adaptar el Sprint Backlog.",
+      "Inspeccionar los resultados del Sprint y discutir el progreso hacia el objetivo del producto (Revisión).",
+      "Inspeccionar cómo fue el último Sprint respecto a personas, interacciones y procesos (Retrospectiva).",
+      "Presentar formalmente el incremento a los stakeholders.",
+      "Negociar contractual con el cliente."
+    ],
+    c: 1 // B
+  },
+  {
+    t: 2,
+    q: "La Reunión de Retrospectiva en Scrum es el evento que:",
+    o: [
+      "Inicia el Sprint y establece el Sprint Goal.",
+      "Determina qué hacer a continuación y ajusta el Product Backlog (Revisión).",
+      "Es el penúltimo evento del Sprint y dura 4 horas como máximo.",
+      "Da por terminado el Sprint, inspeccionando el Sprint pasado y planteando acciones de mejora para el próximo.",
+      "Se centra únicamente en la calidad técnica y el buen diseño del código.",
+      "Es una sesión de trabajo de los Developers de 15 minutos a la misma hora y lugar."
+    ],
+    c: 3 // D
+  },
+  {
+    t: 2,
+    q: "Una de las prácticas de desarrollo ágil mencionadas que se centra en el arte de maximizar la cantidad de trabajo no realizado es:",
+    o: [
+      "Programación por parejas.",
+      "Integración continua.",
+      "La simplicidad.",
+      "La conversación cara a cara.",
+      "Refactorización.",
+      "El desarrollo sostenible."
+    ],
+    c: 2 // C
+  },
+  {
+    t: 2,
+    q: "¿Bajo qué condiciones se consideran los métodos ágiles más eficaces que los métodos tradicionales?",
+    o: [
+      "Equipos de desarrollo de gran tamaño y sistemas de larga duración con regulaciones externas.",
+      "Sistemas de control críticos para la seguridad que requieren un análisis completo.",
+      "Altos niveles de habilidad del equipo, incertidumbre en el negocio o la tecnología, y presión por entregar valor rápido.",
+      "Cuando el alcance, el coste y el tiempo son fijos y conocidos desde el principio.",
+      "Exclusivamente en sistemas donde las pruebas son innecesarias.",
+      "Cuando se requiere un equipo que se comunique principalmente mediante documentación extensa."
+    ],
+    c: 2 // C
+  },
+  {
+    t: 2,
+    q: "El Product Backlog en Scrum es una lista:",
+    o: [
+      "Fija e inmutable de los requisitos del sistema.",
+      "De items que ya han sido completados en el Sprint anterior.",
+      "Estática de tareas para la entrega del incremento.",
+      "Dinámica, ordenada y cambiante de lo que es necesario para mejorar el producto.",
+      "Creada y gestionada por el Scrum Master.",
+      "Compuesta únicamente por el Sprint Goal y el plan de puesta en producción."
+    ],
+    c: 3 // D
+  },
+  {
+    t: 2,
+    q: "Según los principios del Manifiesto Ágil, ¿cuál es la medida principal de progreso en el desarrollo de software?",
+    o: [
+      "El cumplimiento del plan de actividades detallado.",
+      "El número de líneas de código escritas por el equipo.",
+      "La cantidad de documentación técnica generada.",
+      "El software funcionando.",
+      "El apoyo de los directivos.",
+      "El nivel de madurez CMMI alcanzado."
+    ],
+    c: 3 // D
+  },
+
+  // --- TEMA 3: INTRODUCCIÓN A LOS SISTEMAS DE INFORMACIÓN ---
+  {
+    t: 3,
+    q: "Según la definición, ¿qué es un Sistema?",
+    o: [
+      "Un conjunto de componentes aislados que actúan independientemente.",
+      "Una estructura rígida que solo acepta datos como entrada.",
+      "Un conjunto de componentes que interactúan entre sí para lograr unos objetivos comunes.",
+      "Un componente de hardware y software sin intervención humana.",
+      "Cualquier elemento que genere información sin necesidad de entradas.",
+      "Un proceso de transformación lineal que no está realimentado."
+    ],
+    c: 2 // C
+  },
+  {
+    t: 3,
+    q: "¿Qué proceso se requiere aplicar a los Datos para convertirlos en Información?",
+    o: [
+      "Debate y evaluación de consecuencias.",
+      "Comparar y establecer conexiones.",
+      "Almacenamiento y distribución.",
+      "Contextualizar, categorizar, calcular, corregir o condensar.",
+      "Operación y mantenimiento.",
+      "Gestión de transacciones bajo demanda."
+    ],
+    c: 3 // D
+  },
+  {
+    t: 3,
+    q: "Un Sistema de Información (SI) se define como un sistema diseñado para:",
+    o: [
+      "Únicamente almacenar y distribuir información sobre su entorno.",
+      "Recoger, almacenar, procesar y distribuir información sobre el estado de su entorno y soportar operaciones, gestión y toma de decisiones.",
+      "Sustituir por completo a las personas y los procedimientos manuales.",
+      "Soportar exclusivamente la toma de decisiones estratégicas.",
+      "Actuar de forma activa bajo demanda para modificar el entorno.",
+      "Estar compuesto solamente por hardware y software, excluyendo personas."
+    ],
+    c: 1 // B
+  },
+  {
+    t: 3,
+    q: "¿Cuál de las siguientes afirmaciones es correcta al comparar un Sistema Informático (SI) y un Sistema de Información (SI)?",
+    o: [
+      "Un sistema de información es siempre parte de un sistema informático.",
+      "Un sistema informático no puede ser parte de un sistema de información de una organización.",
+      "Un sistema de información suele incluir un sistema informático entre sus componentes, excepto si es completamente manual.",
+      "Ambos términos son sinónimos y se usan indistintamente en la práctica.",
+      "El sistema informático incluye el bibliotecario y las fichas de los libros, y el de información incluye el ordenador y la aplicación.",
+      "Un sistema informático siempre ofrece interfaz gráfica, balanceador de peticiones y servidor de aplicaciones."
+    ],
+    c: 2 // C
+  },
+  {
+    t: 3,
+    q: "La función de un Sistema de Información que consiste en mantener una representación interna del estado del entorno del sistema se denomina:",
+    o: [
+      "Función Activa.",
+      "Función Informativa.",
+      "Función Operacional.",
+      "Función de Control.",
+      "Función de Memoria.",
+      "Función de Transformación."
+    ],
+    c: 4 // E
+  },
+  {
+    t: 3,
+    q: "Cuando un Sistema de Información realiza una función de forma Autónoma, significa que:",
+    o: [
+      "El usuario del sistema de información solicita un determinado servicio (Bajo demanda).",
+      "El sistema realiza la función al detectar cambios en su entorno.",
+      "Se está en el nivel de gestión Estratégico.",
+      "La información se obtiene de fuentes externas como la competencia.",
+      "El sistema solo responde a las preguntas del usuario.",
+      "Se está realizando una gestión de proyectos ágil."
+    ],
+    c: 1 // B
+  },
+  {
+    t: 3,
+    q: "El nivel de gestión de una organización caracterizado por tener objetivos organizacionales, ser de largo plazo y ser decidido por la dirección es el nivel:",
+    o: [
+      "Operacional.",
+      "Táctico.",
+      "Informativo.",
+      "Estratégico.",
+      "Activo.",
+      "Transaccional."
+    ],
+    c: 3 // D
+  },
+  {
+    t: 3,
+    q: "Según la clasificación de sistemas de información por servicio, el nivel Táctico de apoyo a la gestión se relaciona con:",
+    o: [
+      "TPS (Transaction Processing System).",
+      "DSS (Decision Support Systems) y MIS (Management Information System).",
+      "Solo DSS.",
+      "Sistemas integrales de gestión como ERP.",
+      "El nivel Operacional.",
+      "El nivel Estratégico."
+    ],
+    c: 1 // B
+  },
+  {
+    t: 3,
+    q: "¿Cuál es el principal objetivo de un TPS (Transaction Processing System)?",
+    o: [
+      "Generar informes periódicos con estructura fija para gerentes de nivel medio.",
+      "Proporcionar informes, análisis y simulaciones de forma flexible para resolver problemas no previstos.",
+      "Utilizar modelos de IA para ayudar a la toma de decisiones.",
+      "Capturar y procesar datos sobre las transacciones que se realizan diariamente en la organización.",
+      "Gestionar la relación con los clientes (CRM).",
+      "Mejorar y automatizar la cadena de suministro (SCM)."
+    ],
+    c: 3 // D
+  },
+  {
+    t: 3,
+    q: "Una de las características ACID para garantizar el correcto estado de la información en un TPS establece que las operaciones o son completadas y procesadas totalmente o son descartadas y no tienen efecto. ¿A qué característica se refiere?",
+    o: [
+      "Consistency (Consistencia).",
+      "Isolation (Aislamiento).",
+      "Durability (Durabilidad).",
+      "Heterogeneity (Heterogeneidad).",
+      "Atomicity (Atomicidad).",
+      "Agility (Agilidad)."
+    ],
+    c: 4 // E
+  },
+  {
+    t: 3,
+    q: "En el contexto de un TPS, si una persona está retirando dinero de una cuenta al mismo tiempo que otra está depositando, y el sistema gestiona la prioridad para evitar inconsistencias, ¿a qué característica ACID se está refiriendo el ejemplo?",
+    o: [
+      "Durability.",
+      "Atomicity.",
+      "Isolation.",
+      "Consistency.",
+      "Concurrency.",
+      "Transparency."
+    ],
+    c: 2 // C
+  },
+  {
+    t: 3,
+    q: "¿Qué tipo de Sistema de Información transforma datos e información en una variedad de formas para cumplir con los requisitos de los gestores de nivel medio (táctica), generando a menudo informes periódicos de estructura fija a partir de los datos de los TPS?",
+    o: [
+      "DSS (Decision Support System).",
+      "ERP (Enterprise Resource Planning).",
+      "MIS (Management Information System).",
+      "SCM (Supply Chain Management).",
+      "CRM (Customer Relationship Management).",
+      "TPS (Transaction Processing System)."
+    ],
+    c: 2 // C
+  },
+  {
+    t: 3,
+    q: "¿Qué tipo de Sistema de Información se enfoca en ayudar a resolver problemas no previstos y suele utilizar tecnologías como Data Warehousing, Big Data y modelos de IA, ya que usa información de TPS, MIS y fuentes externas?",
+    o: [
+      "ERP.",
+      "SCM.",
+      "MIS.",
+      "TPS.",
+      "DSS (Decision Support Systems).",
+      "CRM."
+    ],
+    c: 4 // E
+  },
+  {
+    t: 3,
+    q: "El sistema integral de gestión ERP (Enterprise Resource Planning) se utiliza para:",
+    o: [
+      "Gestionar el suministro y la trazabilidad de los productos.",
+      "Gestionar exclusivamente la relación con los clientes (Marketing, atención al cliente).",
+      "Modelar las bases de datos relacionales.",
+      "La gestión integral de los procesos de negocio de la empresa (Compras, ventas, inventario, nóminas, contabilidad, etc.).",
+      "Apoyar la toma de decisiones estratégicas mediante simulaciones.",
+      "Procesar exclusivamente transacciones diarias."
+    ],
+    c: 3 // D
+  },
+  {
+    t: 3,
+    q: "Además de hardware y software, ¿qué otros componentes forman parte de un Sistema Informático según el material?",
+    o: [
+      "Solo el entorno y la realimentación.",
+      "Solo los datos de Data Warehousing.",
+      "Personal encargado de su operación, y procedimientos de operación y mantenimiento.",
+      "Exclusivamente los recursos de redes y medios de comunicación.",
+      "Únicamente los ítems del Product Backlog.",
+      "La Definición de Hecho (DoD) y el Product Owner."
+    ],
+    c: 2 // C
+  },
+
+  // --- TEMA 4: REQUISITOS PARA SISTEMAS DE INFORMACIÓN ---
+  {
+    t: 4,
+    q: "Según el Glosario IEEE 610.12, ¿qué es un requisito?",
+    o: [
+      "Una característica del sistema que es una condición para su aceptación (Norma MIL-STD-498).",
+      "Una propiedad que un sistema debería tener para tener éxito en el entorno en el que se usará (J. Goguen).",
+      "Una condición o capacidad que un usuario necesita para resolver un problema o lograr un objetivo.",
+      "Un producto que debe generarse durante la fase de codificación.",
+      "Un elemento de la matriz de trazabilidad que relaciona solo requisitos detallados.",
+      "Un listado de morosos que el sistema debe imprimir semanalmente."
+    ],
+    c: 2 // C
+  },
+  {
+    t: 4,
+    q: "En el contexto de las metodologías ágiles, ¿qué herramienta se propone para la especificación de los requisitos, escrita desde el punto de vista del usuario y usando su vocabulario?",
+    o: [
+      "Casos de Uso.",
+      "Modelos de Base de Datos.",
+      "Historias de usuario.",
+      "Matrices de Trazabilidad.",
+      "Requisitos No Funcionales.",
+      "Glosario de Términos."
+    ],
+    c: 2 // C
+  },
+  {
+    t: 4,
+    q: "Según el formato de Mike Cohn para las Historias de Usuario, ¿cuáles son las tres partes principales (dos de ellas opcionales) que componen la estructura de una historia?",
+    o: [
+      "Identificador, Descripción y Versión.",
+      "Título, Como [tipo de usuario], y Para [razón].",
+      "Requisito General, Requisito Funcional y Requisito No Funcional.",
+      "Servicio, Interfaz y Restricción Técnica.",
+      "Necesidad, Solución y Prueba de Aceptación.",
+      "Entregable, Presupuesto y Plazo."
+    ],
+    c: 1 // B
+  },
+  {
+    t: 4,
+    q: "Una Historia Épica (Objetivo) se caracteriza por ser:",
+    o: [
+      "Un requisito funcional detallado que describe una secuencia de interacciones.",
+      "Un requisito de información que describe los datos específicos a almacenar.",
+      "Un requisito de alto nivel y poco detalle, utilizado a menudo para organizar jerárquicamente otras historias.",
+      "Una regla de negocio relativamente inestable que debe ser respetada.",
+      "Una prueba de aceptación que debe ser programada para ejecución automática.",
+      "Un requisito no funcional relacionado con la usabilidad o la fiabilidad."
+    ],
+    c: 2 // C
+  },
+  {
+    t: 4,
+    q: "¿Cuál es el propósito de los Requisitos de Información?",
+    o: [
+      "Definir los servicios que los usuarios desean que el sistema les ofrezca (Requisitos Funcionales).",
+      "Describir qué información se debe almacenar sobre un concepto relevante para poder cumplir los objetivos.",
+      "Describir aspectos relacionados con la calidad (rendimiento, seguridad, etc.).",
+      "Establecer políticas del negocio que deben ser respetadas por el sistema (Reglas de Negocio).",
+      "Describir una secuencia de interacciones entre un usuario y el sistema (Casos de Uso).",
+      "Especificar la restricción técnica del entorno de producción."
+    ],
+    c: 1 // B
+  },
+  {
+    t: 4,
+    q: "Una Regla de Negocio se caracteriza por:",
+    o: [
+      "Definir los servicios que el sistema ofrece a los usuarios.",
+      "Ser un requisito relativamente estable y que difícilmente cambiará en el futuro.",
+      "Ser la propuesta de las metodologías ágiles para la especificación de requisitos.",
+      "Definir reglas o políticas del negocio que son importantes para los usuarios y deben ser respetadas, y suelen ser requisitos relativamente inestables.",
+      "Describir el tiempo de respuesta y el número de usuarios concurrentes.",
+      "Requerir una matriz de trazabilidad para su aceptación."
+    ],
+    c: 3 // D
+  },
+  {
+    t: 4,
+    q: "El requisito funcional: 'Como director de la biblioteca, quiero imprimir un listado de los préstamos cuyo plazo haya expirado al menos una semana antes de la fecha actual, para conocer a los usuarios morosos', se enfoca en:",
+    o: [
+      "La fiabilidad del sistema.",
+      "La interfaz de usuario.",
+      "Un servicio que el sistema debe ofrecer a un usuario.",
+      "Una restricción técnica sobre el entorno de producción.",
+      "La trazabilidad de los datos.",
+      "Una prueba de aceptación automática."
+    ],
+    c: 2 // C
+  },
+  {
+    t: 4,
+    q: "Los Casos de Uso constituyen una manera alternativa a las historias de usuario para definir qué tipo de requisitos?",
+    o: [
+      "Requisitos No Funcionales.",
+      "Requisitos Generales.",
+      "Requisitos de Información.",
+      "Reglas de Negocio.",
+      "Requisitos Funcionales.",
+      "Restricciones Técnicas."
+    ],
+    c: 4 // E
+  },
+  {
+    t: 4,
+    q: "¿Qué describen los Requisitos No Funcionales?",
+    o: [
+      "La secuencia de interacciones entre un usuario y el sistema (Casos de Uso).",
+      "Los servicios específicos que el usuario desea que el sistema les ofrezca (Requisitos Funcionales).",
+      "Aspectos relacionados con la calidad que son importantes para los usuarios, como usabilidad, rendimiento, fiabilidad y seguridad.",
+      "Las políticas del negocio que son importantes y deben ser respetadas (Reglas de Negocio).",
+      "El NIF, nombre y dirección de los clientes.",
+      "El alcance, el coste y el tiempo del proyecto."
+    ],
+    c: 2 // C
+  },
+  {
+    t: 4,
+    q: "El requisito 'Como responsable de atención al cliente, quiero que el tiempo de respuesta sea menor a 2 segundos con 1000 usuarios concurrentes o menos' es un ejemplo de Requisito No Funcional relacionado con:",
+    o: [
+      "Fiabilidad.",
+      "Usabilidad.",
+      "Seguridad.",
+      "Compatibilidad.",
+      "Rendimiento (Eficiencia).",
+      "Mantenibilidad."
+    ],
+    c: 4 // E
+  },
+  {
+    t: 4,
+    q: "En la norma ISO/IEC 25010 (evaluación general calidad), las características 'madurez', 'tolerancia a fallos' y 'capacidad de recuperación' se agrupan bajo la característica principal de:",
+    o: [
+      "Funcionalidad.",
+      "Usabilidad.",
+      "Eficiencia.",
+      "Fiabilidad.",
+      "Mantenibilidad.",
+      "Portabilidad."
+    ],
+    c: 3 // D
+  },
+  {
+    t: 4,
+    q: "¿Cuál es el doble propósito de las Pruebas de Aceptación asociadas a un requisito?",
+    o: [
+      "Servir como la única fuente de información y reemplazar la historia de usuario.",
+      "Describir cómo validar que el sistema satisface los requisitos y añadir más detalle a las historias de usuario.",
+      "Definir las reglas de negocio y las restricciones técnicas.",
+      "Auditar los productos del desarrollo y documentar las no conformidades.",
+      "Reemplazar la matriz de trazabilidad al final del proyecto.",
+      "Medir el cumplimiento de la funcionalidad y la idoneidad."
+    ],
+    c: 1 // B
+  },
+  {
+    t: 4,
+    q: "Una Matriz de Trazabilidad es una tabla que:",
+    o: [
+      "Describe una secuencia de interacciones entre un usuario y el sistema.",
+      "Muestra únicamente la relación entre los Requisitos Funcionales y las Pruebas de Aceptación.",
+      "Muestra la relación existente entre elementos de diferentes artefactos del software y facilita la gestión del cambio.",
+      "Define el contexto y el conjunto de conceptos y entidades del dominio del problema.",
+      "Se utiliza para generar automáticamente las historias de usuario.",
+      "Contiene la lista de clientes con pagos o pedidos pendientes."
+    ],
+    c: 2 // C
+  },
+  {
+    t: 4,
+    q: "Según el PMBOK, los requisitos se recomienda trazarlos (además de a otros elementos detallados) con respecto a:",
+    o: [
+      "Solo las pruebas de aceptación y el glosario de términos.",
+      "Necesidades del negocio, Objetivos del proyecto y Alcance del proyecto.",
+      "Únicamente el código fuente y el software ejecutable.",
+      "Exclusivamente los requisitos no funcionales y las reglas de negocio.",
+      "Las historias épicas que no tienen título ni razón.",
+      "La curva de madurez y la atractividad."
+    ],
+    c: 1 // B
+  },
+  {
+    t: 4,
+    q: "El requisito no funcional: 'Como responsable TIC del cliente, quiero que solo puedan acceder al sistema los empleados de mi organización, para cumplir con la Ley de Protección de Datos', es un ejemplo de requisito relacionado con:",
+    o: [
+      "Rendimiento.",
+      "Disponibilidad.",
+      "Usabilidad.",
+      "Seguridad.",
+      "Coexistencia.",
+      "Intercambiabilidad."
+    ],
+    c: 3 // D
+  },
+
+  // --- TEMA 5: INTRODUCCIÓN AL MODELO CONCEPTUAL ---
+  {
+    t: 5,
+    q: "¿En qué momento del ciclo de desarrollo de software se utiliza el modelado conceptual, independientemente del ciclo de vida elegido (por ejemplo, el modelo en cascada)?",
+    o: [
+      "Durante la fase de Implementación.",
+      "Exclusivamente durante la fase de Mantenimiento.",
+      "Durante el último estadio del Análisis.",
+      "Durante la fase de Pruebas.",
+      "Únicamente en la elaboración del Documento de Diseño.",
+      "Al inicio de la fase de Requisitos."
+    ],
+    c: 2 // C
+  },
+  {
+    t: 5,
+    q: "¿Qué estándar se utiliza para el modelado conceptual de sistemas de software y es gestionado por la OMG (Object Management Group)?",
+    o: [
+      "PMBOK.",
+      "CMMI.",
+      "ISO 12207.",
+      "UML (Unified Modeling Language).",
+      "SCRUM.",
+      "ACID."
+    ],
+    c: 3 // D
+  },
+  {
+    t: 5,
+    q: "Según el material, ¿hacia qué tipos de requisitos deben estar trazados (justificados) los elementos de un modelo conceptual, como clases o atributos?",
+    o: [
+      "Requisitos Funcionales y Casos de Uso.",
+      "Historias Épicas y Pruebas de Aceptación.",
+      "Restricciones Técnicas y Requisitos No Funcionales.",
+      "Requisitos de Información y Reglas de Negocio.",
+      "Requisitos de Usabilidad y Fiabilidad.",
+      "Glosario de Términos y Modelos."
+    ],
+    c: 3 // D
+  },
+  {
+    t: 5,
+    q: "En un Diagrama de Clases UML, ¿qué indica el uso del estereotipo <<Entidad>> en una clase?",
+    o: [
+      "Que la clase representa un componente de software con lógica de negocio.",
+      "Que la clase representa una entidad, y no una clase de un lenguaje de programación orientado a objetos.",
+      "Que la clase es obligatoria en todas las asociaciones.",
+      "Que se trata de una clase abstracta sin instancias posibles.",
+      "Que la clase no puede tener atributos.",
+      "Que el nombre de la clase debe ir obligatoriamente en plural."
+    ],
+    c: 1 // B
+  },
+  {
+    t: 5,
+    q: "En la notación UML para atributos, ¿qué indica la expresión [0..1] al lado de un atributo?",
+    o: [
+      "Que el atributo puede tener entre 0 y 10 valores.",
+      "Que el atributo es obligatorio y solo puede tener un valor atómico.",
+      "Que el atributo es opcional y se representará mediante un valor nulo si no se conoce.",
+      "Que el atributo es un valor atómico que no puede ser nulo.",
+      "Que es el valor mínimo y máximo de la multiplicidad de la asociación.",
+      "Que se trata de un tipo enumerado."
+    ],
+    c: 2 // C
+  },
+  {
+    t: 5,
+    q: "¿Cómo se nombra habitualmente una Asociación entre clases en un Diagrama de Clases UML?",
+    o: [
+      "Mediante un sustantivo en plural (Ej: Productos).",
+      "Mediante una forma verbal en infinitivo (Ej: Comprar).",
+      "Mediante un verbo en tercera persona del singular y las preposiciones que hagan falta.",
+      "Mediante un atributo de valor nulo.",
+      "Utilizando una restricción entre llaves.",
+      "Mediante una notación de Generalización/Especialización."
+    ],
+    c: 2 // C
+  },
+  {
+    t: 5,
+    q: "¿En qué casos es necesario indicar el Rol de un extremo de una asociación en UML?",
+    o: [
+      "Cuando la multiplicidad es 0..*.",
+      "Siempre que la clase entidad tenga atributos.",
+      "Solo en asociaciones de una clase consigo misma o cuando existe más de una asociación entre dos clases.",
+      "Solo en asociaciones que tienen multiplicidad obligatoria (1..1 o 1..*).",
+      "Exclusivamente en asociaciones de composición o agregación.",
+      "Nunca, el rol se deduce del nombre de la asociación."
+    ],
+    c: 2 // C
+  },
+  {
+    t: 5,
+    q: "En la notación de Multiplicidad UML, ¿qué rango de valores representa la notación 1..*?",
+    o: [
+      "Opcional (puede no haber ninguna instancia).",
+      "Opcional múltiple.",
+      "Obligatoria múltiple.",
+      "Obligatoria (exactamente una instancia).",
+      "Opcional hasta dos instancias.",
+      "Equivalente a 0..*."
+    ],
+    c: 2 // C
+  },
+  {
+    t: 5,
+    q: "En la Generalización/Especialización, ¿qué concepto contiene todas las propiedades (atributos y asociaciones) comunes, que son heredadas por las clases más específicas?",
+    o: [
+      "La subclase.",
+      "La clase Componente.",
+      "La clase Asociada.",
+      "La superclase.",
+      "El Objeto (Instancia).",
+      "El Enlace."
+    ],
+    c: 3 // D
+  },
+  {
+    t: 5,
+    q: "Una clasificación UML que incluye la restricción {completa} implica que:",
+    o: [
+      "Las instancias de la superclase pueden ser instancias de una o más subclases.",
+      "La clasificación es recursiva.",
+      "Las instancias de la superclase deben ser instancias de al menos una subclase, lo que hace que la superclase sea abstracta.",
+      "Las instancias de la superclase pueden ser instancias de una sola subclase.",
+      "Puede haber instancias de la superclase que no lo sean de ninguna subclase.",
+      "Solo se permite el uso del estereotipo <<Entidad>>."
+    ],
+    c: 2 // C
+  },
+  {
+    t: 5,
+    q: "En la notación de Composición (rombo negro), ¿cuál de las siguientes afirmaciones es cierta sobre la relación entre el todo y la parte?",
+    o: [
+      "Una parte puede existir sin pertenecer a un todo.",
+      "La eliminación del todo no implica la eliminación de todas sus partes.",
+      "El rombo negro identifica al componente.",
+      "La multiplicidad del compuesto (el todo) es siempre 1.",
+      "Una parte puede pertenecer a varios todos.",
+      "Es similar a la agregación pero más débil."
+    ],
+    c: 3 // D
+  },
+  {
+    t: 5,
+    q: "¿Qué característica diferencia fundamentalmente a la Agregación (rombo blanco) de la Composición?",
+    o: [
+      "La agregación no es transitiva ni antisimétrica.",
+      "En la agregación, una parte puede pertenecer a uno, varios o ningún todo, y su eliminación no afecta a las partes.",
+      "La agregación utiliza el estereotipo <<Enumerado>>.",
+      "El rombo blanco identifica al compuesto y su multiplicidad es siempre 1.",
+      "La agregación se utiliza para modelar las clases asociación.",
+      "La agregación solo se permite en relaciones recursivas."
+    ],
+    c: 1 // B
+  },
+  {
+    t: 5,
+    q: "¿Por qué motivo se transformaría una Asociación en una Clase Asociación (o se modelaría como una clase componente de las participantes)?",
+    o: [
+      "Porque la asociación es de tipo Agregación o Composición.",
+      "Cuando es necesario añadir información (atributos) a la asociación misma, como 'horas' en la relación Empleado-Proyecto.",
+      "Para indicar que se trata de una relación de generalización.",
+      "Cuando los roles de la asociación no están definidos.",
+      "Cuando la multiplicidad es 0..*.",
+      "Cuando el nombre de la asociación es un verbo."
+    ],
+    c: 1 // B
+  },
+  {
+    t: 5,
+    q: "En la notación UML, ¿cómo se representan las Restricciones que permiten añadir información al modelo que no puede expresarse de otra forma?",
+    o: [
+      "Mediante un rombo negro en la asociación.",
+      "Utilizando el estereotipo <<Entidad>>.",
+      "Mediante una nota, con el texto entre llaves {}.",
+      "Subrayando el nombre de la asociación.",
+      "Colocando la multiplicidad 1..1.",
+      "Nombrando el elemento con un sustantivo en plural."
+    ],
+    c: 2 // C
+  },
+  {
+    t: 5,
+    q: "En un Diagrama de Objetos (Diagrama de Instancias), ¿qué elemento debe estar subrayado para no confundirlo con una clase?",
+    o: [
+      "Solo el nombre de la asociación.",
+      "Solo los valores de los atributos.",
+      "El nombre y la clase del objeto (ejemplo: nombre Objeto: Clase).",
+      "Las restricciones.",
+      "El estereotipo <<Entidad>>.",
+      "El nombre de la asociación y los nombres de los atributos."
+    ],
+    c: 2 // C
+  },
+  // --- TEMA 7: NORMALIZACIÓN DE MODELOS RELACIONALES ---
+  {
+    t: 7,
+    q: "Según el material, la forma de asegurar la calidad de un modelo relacional frente a las anomalías de manipulación es comprobar que está al menos en:",
+    o: [
+      "Primera Forma Normal (1FN).",
+      "Forma Normal de Boyce-Codd (FNBC).",
+      "Tercera Forma Normal (3FN).",
+      "Cuarta Forma Normal (4FN).",
+      "Segunda Forma Normal (2FN).",
+      "Quinta Forma Normal (5FN)."
+    ],
+    [cite_start]c: 2 // C [cite: 1291-1297]
+  },
+  {
+    t: 7,
+    q: "En el contexto de un modelo relacional no normalizado (como la tabla Inmuebles inicial), ¿a qué anomalía se refiere la repetición del nombre y cargo de cada empleado tantas veces como inmuebles gestione?",
+    o: [
+      "Anomalía de Eliminación.",
+      "Riesgo de Incoherencia.",
+      "Anomalía de Inserción.",
+      "Problema de Consulta.",
+      "Dato Redundante.",
+      "Dependencia Funcional."
+    ],
+    [cite_start]c: 4 // E [cite: 1299-1305]
+  },
+  {
+    t: 7,
+    q: "La Anomalía de Inserción se produce cuando:",
+    o: [
+      "Los datos de un empleado desaparecen del sistema si deja de gestionar inmuebles.",
+      "El nombre y cargo de un empleado se repite varias veces.",
+      "Se intenta modificar un dato, y se debe actualizar múltiples ocurrencias.",
+      "Hasta que un empleado no gestione un inmueble, no se puede registrar su información en el sistema.",
+      "No se pueden consultar todos los inmuebles de un determinado propietario.",
+      "Un atributo no primo depende completamente de la clave."
+    ],
+    [cite_start]c: 3 // D [cite: 1307-1313]
+  },
+  {
+    t: 7,
+    q: "Si una tupla de la relación Inmuebles se elimina, y con ella desaparecen los datos de un empleado (nombre y cargo) que ya no gestiona ningún otro inmueble, estamos ante una:",
+    o: [
+      "Anomalía de Actualización.",
+      "Anomalía de Inserción.",
+      "Anomalía de Eliminación.",
+      "Dependencia Parcial.",
+      "Dependencia Transitiva.",
+      "Dependencia Incoherente."
+    ],
+    [cite_start]c: 2 // C [cite: 1315-1321]
+  },
+  {
+    t: 7,
+    q: "¿Cuál es la definición de Dependencia Funcional X → Y?",
+    o: [
+      "X es un subconjunto de Y.",
+      "Y es la clave primaria de la relación.",
+      "Siempre que dos tuplas tienen los mismos valores de Y, también tienen los mismos valores de X.",
+      "Siempre que dos tuplas tienen los mismos valores de X, también tienen los mismos valores de Y.",
+      "X e Y son atributos primos de la relación.",
+      "Y no depende completamente de X."
+    ],
+    [cite_start]c: 3 // D [cite: 1323-1329]
+  },
+  {
+    t: 7,
+    q: "¿Cómo se identifican las Dependencias Funcionales (DF)?",
+    o: [
+      "Se deducen de los datos de la extensión de la relación (las tuplas).",
+      "Dependen de la semántica de los atributos de las relaciones en el modelo conceptual y, por extensión, en el dominio del problema.",
+      "Se identifican únicamente si los datos de la extensión las contradicen.",
+      "Se establecen por el DBA al crear la Base de Datos.",
+      "Se extraen directamente del grafo de dependencias funcionales.",
+      "Se determinan mediante la cardinalidad y el grado de la relación."
+    ],
+    [cite_start]c: 1 // B [cite: 1331-1337]
+  },
+  {
+    t: 7,
+    q: "Una relación está en Primera Forma Normal (1FN) si:",
+    o: [
+      "Todos los atributos no primos son completamente dependientes de las claves candidatas.",
+      "Ningún atributo no primo depende transitivamente de ninguna clave candidata.",
+      "En cada tupla se le asigna a cada atributo un solo valor del dominio sobre el que está definido (ausencia de grupos repetidos).",
+      "No existen dependencias multivaluadas.",
+      "Está en FNBC y no tiene grupos de atributos repetidos.",
+      "Se ha normalizado el modelo a dos o más relaciones."
+    ],
+    [cite_start]c: 2 // C [cite: 1339-1345]
+  },
+  {
+    t: 7,
+    q: "En el ejemplo de la tabla Inmuebles inicial, un fallo de 1FN se produce porque:",
+    o: [
+      "El atributo cargo depende transitivamente de inmuebleId.",
+      "El atributo propietarios contiene múltiples valores (lista de propietarios con porcentaje), violando la atomicidad.",
+      "El atributo empleadoId es nulo para algunos inmuebles.",
+      "La clave primaria {inmuebleId, propietario} es parcial.",
+      "El atributo nombre del empleado se repite.",
+      "La dirección y el precio dependen de la clave primaria."
+    ],
+    [cite_start]c: 1 // B [cite: 1347-1353]
+  },
+  {
+    t: 7,
+    q: "Una relación está en Segunda Forma Normal (2FN) si está en 1FN y:",
+    o: [
+      "Está exenta de anomalías de inserción y eliminación.",
+      "No tiene grupos repetidos ni dependencias transitivas.",
+      "Todos los atributos no primos son completamente dependientes de las claves candidatas (no hay dependencia parcial).",
+      "Todos los atributos dependen únicamente de la clave primaria.",
+      "Se ha descompuesto en dos relaciones, una para la entidad y otra para la asociación.",
+      "Todos los atributos son primos."
+    ],
+    [cite_start]c: 2 // C [cite: 1355-1361]
+  },
+  {
+    t: 7,
+    q: "La relación Inmuebles con clave primaria (inmuebleId, propietario) y las dependencias funcionales inmuebleId → {dirección, precio, empleadoId, nombre, cargo} no está en 2FN porque:",
+    o: [
+      "porcentaje depende de la clave completa.",
+      "empleadoId depende de forma transitiva de inmuebleId.",
+      "Atributos no primos como dirección o precio dependen de una parte de la clave candidata (inmuebleId), lo que constituye una dependencia parcial.",
+      "nombre y cargo son atributos compuestos.",
+      "Se está representando una relación M:N.",
+      "El atributo propietario no es atómico."
+    ],
+    [cite_start]c: 2 // C [cite: 1363-1369]
+  },
+  {
+    t: 7,
+    q: "Para transformar una relación que no está en 2FN, como la del ejemplo, a un conjunto de relaciones en 2FN, la regla general es:",
+    o: [
+      "Eliminar los atributos no primos que dependen parcialmente.",
+      "Crear una nueva relación para cada dependencia funcional transitiva.",
+      "Crear una nueva relación para la entidad principal y otra para los atributos que dependen de una parte de la clave.",
+      "Descomponer en dos relaciones: R1(K1, X) y R2(K1, K2, Y), donde K1 → X es la dependencia parcial.",
+      "Asegurar que las claves primarias de las nuevas relaciones no sean nulas.",
+      "Utilizar solo claves ajenas y evitar las claves alternativas."
+    ],
+    [cite_start]c: 3 // D [cite: 1371-1378]
+  },
+  {
+    t: 7,
+    q: "Una relación está en Tercera Forma Normal (3FN) si está en 2FN y:",
+    o: [
+      "Todos los atributos no primos dependen completamente de las claves.",
+      "Ningún atributo no primo depende transitivamente de ninguna clave candidata.",
+      "Los atributos no primos solo dependen del componente de la clave.",
+      "Está en 1FN y no hay grupos repetidos.",
+      "Se ha aplicado la regla de descomposición para la dependencia parcial.",
+      "Se ha resuelto el problema de la dependencia funcional compleja."
+    ],
+    [cite_start]c: 1 // B [cite: 1380-1386]
+  },
+  {
+    t: 7,
+    q: "En la tabla Inmuebles (2FN OK, con PK: inmuebleId), existe una dependencia transitiva. ¿Cuál es la cadena de dependencias que la ejemplifica, causando el fallo de 3FN?",
+    o: [
+      "inmuebleId → nombre → cargo.",
+      "inmuebleId → dirección → precio.",
+      "empleadoId → inmuebleId → cargo.",
+      "inmuebleId → empleadoId y empleadoId → {nombre, cargo}.",
+      "inmuebleId → precio y inmuebleId → dirección.",
+      "inmuebleId → propietario → porcentaje."
+    ],
+    [cite_start]c: 3 // D [cite: 1388-1395]
+  },
+  {
+    t: 7,
+    q: "La descomposición del modelo de Inmuebles para alcanzar la 3FN implica:",
+    o: [
+      "Crear una sola relación que contenga todos los atributos, asegurando que no haya valores nulos.",
+      "Crear una relación Inmuebles (con FK a Empleados) y otra relación Empleados (con empleadoId como PK y sus atributos).",
+      "Crear una relación Empleados y una relación Propietarios.",
+      "Eliminar el atributo cargo ya que depende transitivamente.",
+      "Utilizar el concepto de Clase Asociación para modelar la relación Inmueble-Empleado.",
+      "Aplicar un producto cartesiano entre las tablas Inmuebles y Empleados."
+    ],
+    [cite_start]c: 1 // B [cite: 1397-1403]
+  },
+  {
+    t: 7,
+    q: "Según la justificación de la 3FN, todos los atributos no primos deben representar un hecho sobre:",
+    o: [
+      "Toda la clave y la clave alternativa.",
+      "La clave, toda la clave y nada más que la clave.",
+      "El dominio del problema, la extensión y la intensión.",
+      "El conjunto de atributos primos.",
+      "Las dependencias funcionales complejas.",
+      "Solo los atributos de la superclase."
+    ],
+    [cite_start]c: 1 // B [cite: 1405-1411]
+  },
+
+  // --- TEMA 8: TRANSFORMACIÓN DE MC EN MR ---
+  {
+    t: 8,
+    q: "El Desarrollo Dirigido por Modelos (MDD), aplicado a sistemas de información con bases de datos relacionales, sigue la siguiente secuencia de transformación:",
+    o: [
+      "Requisitos → Código SQL → Modelo Conceptual (MC).",
+      "Modelo Relacional (MR) → Requisitos → Código SQL.",
+      "Modelo Conceptual (MC) → Modelo Relacional (MR) → Código SQL.",
+      "Código SQL → Modelo Relacional (MR) → Modelo Conceptual (MC).",
+      "Modelo de Diseño → Modelo de Pruebas → Código Fuente.",
+      "Desarrollo → Análisis → Diseño → Implementación."
+    ],
+    [cite_start]c: 2 // C [cite: 1035-1041]
+  },
+  {
+    t: 8,
+    q: "Según la regla general de transformación de entidades a relaciones, ¿qué se recomienda añadir a la relación para la identificación de objetos sin depender de claves semánticas?",
+    o: [
+      "Una clave ajena (FK) a sí misma.",
+      "Un atributo semántico que sea obligatorio.",
+      "Un sufijo_Relacional al nombre.",
+      "Un atributo artificial, a menudo numérico, como clave primaria con el sufijo Id (Ej: usuarioId).",
+      "Una clave candidata compuesta de todos los atributos.",
+      "Un atributo que permita valores nulos."
+    ],
+    [cite_start]c: 3 // D [cite: 1043-1049]
+  },
+  {
+    t: 8,
+    q: "¿Cómo se denomina a los atributos o conjuntos de atributos que son claves en el dominio del problema, como el NIF o el código de producto?",
+    o: [
+      "Identificadores de objetos.",
+      "Atributos artificiales.",
+      "Claves surrogates.",
+      "Claves semánticas.",
+      "Claves foráneas.",
+      "Atributos de composición."
+    ],
+    [cite_start]c: 3 // D [cite: 1051-1057]
+  },
+  {
+    t: 8,
+    q: "Al transformar una entidad Departamento con atributos denominación y presupuesto, ¿cómo se representa una Clave Alternativa (AK) en el modelo relacional?",
+    o: [
+      "Mediante un PRIMARY KEY en SQL.",
+      "Mediante un FOREIGN KEY en SQL.",
+      "Mediante una restricción UNIQUE en SQL (Ej: UNIQUE(denominación)).",
+      "Eliminando el atributo de la clave alternativa.",
+      "Utilizando un sufijo Id para el atributo.",
+      "Asignando un valor por defecto al atributo."
+    ],
+    [cite_start]c: 2 // C [cite: 1059-1066]
+  },
+  {
+    t: 8,
+    q: "¿Cuál es la regla general para transformar una asociación de tipo 1:N (uno a muchos) del Modelo Conceptual (MC) al Modelo Relacional (MR)?",
+    o: [
+      "Se transforma en una relación auxiliar (tabla intermedia).",
+      "Se representa con una clave ajena (FK) en la relación de la entidad del rol N.",
+      "Se representa con una clave ajena (FK) en la relación de la entidad del rol 1.",
+      "Se transforma en una composición obligatoria.",
+      "Se representa con una clave ajena en cualquiera de las relaciones.",
+      "No se transforma, ya que se asume por defecto en el MR."
+    ],
+    [cite_start]c: 1 // B [cite: 1068-1074]
+  },
+  {
+    t: 8,
+    q: "Para transformar una asociación de tipo M:N (muchos a muchos) del Modelo Conceptual (MC) al Modelo Relacional (MR), se requiere:",
+    o: [
+      "Colocar una clave ajena en la relación con multiplicidad N.",
+      "Colocar una clave ajena en la relación con multiplicidad M.",
+      "Utilizar una clave ajena en una de las relaciones, y un atributo ordenado en la otra.",
+      "Crear una relación auxiliar (tabla intermedia) con claves ajenas a las dos relaciones participantes.",
+      "Crear una composición con el rombo negro.",
+      "Transformarla en dos asociaciones 1:N."
+    ],
+    [cite_start]c: 3 // D [cite: 1076-1083]
+  },
+  {
+    t: 8,
+    q: "Si una asociación en el Modelo Conceptual tiene un rol que está {ordenado}, ¿qué debe añadirse al Modelo Relacional?",
+    o: [
+      "Un atributo null en la clave primaria.",
+      "Una restricción UNIQUE en la relación de la entidad del rol N.",
+      "Un atributo que especifique el orden en la misma relación en la que se coloca la clave ajena.",
+      "Un CHECK para garantizar la secuencia.",
+      "Una nueva clave semántica.",
+      "Una clave ajena a una tabla de ordenación."
+    ],
+    [cite_start]c: 2 // C [cite: 1085-1091]
+  },
+  {
+    t: 8,
+    q: "Para transformar una asociación de tipo 1:1 del MC al MR, se recomienda colocar la clave ajena en:",
+    o: [
+      "La relación que representa el rol opcional para evitar almacenar valores nulos.",
+      "La relación que representa el rol obligatorio para asegurar la integridad.",
+      "Una relación auxiliar para mantener la flexibilidad.",
+      "Ambas relaciones para garantizar la bidireccionalidad.",
+      "Únicamente en la clave primaria de ambas relaciones.",
+      "La relación que tenga menos atributos para optimizar el espacio."
+    ],
+    [cite_start]c: 0 // A [cite: 1093-1099]
+  },
+  {
+    t: 8,
+    q: "En la transformación de una asociación M:N mediante una relación auxiliar (tabla intermedia), la pareja de claves ajenas de esta nueva relación también es:",
+    o: [
+      "Un identificador de objeto artificial.",
+      "La clave primaria de la nueva relación.",
+      "Clave alternativa (AK) de la nueva relación.",
+      "Clave ajena a sí misma.",
+      "Atributo con valor nulo.",
+      "Atributo compuesto."
+    ],
+    [cite_start]c: 2 // C - Nota: Según la lógica y la solución C. Normalmente PK es compuesta y se busca AK o viceversa, la solución C indica AK en este contexto específico del test. [cite: 1101-1107]
+  },
+  {
+    t: 8,
+    q: "Una de las tres estrategias de transformación para una jerarquía de clasificación (Generalización/Especialización) es:",
+    o: [
+      "Una relación para la superclase y una vista para cada subclase.",
+      "Una única relación para la superclase y eliminar las subclases.",
+      "Una relación para cada clase de la jerarquía (superclase + subclases).",
+      "Una relación para las subclases abstractas y otra para las concretas.",
+      "Una relación para cada clave semántica.",
+      "Utilizar composición en lugar de generalización."
+    ],
+    [cite_start]c: 2 // C [cite: 1109-1115]
+  },
+  {
+    t: 8,
+    q: "En la estrategia de 'Una relación para cada subclase concreta', ¿qué sucede con los atributos de la superclase?",
+    o: [
+      "Los atributos de la superclase se eliminan.",
+      "Se repiten en cada una de las subclases concretas.",
+      "Se convierten en atributos nulos en las subclases.",
+      "Se transforman en claves ajenas en las subclases.",
+      "Solo la clave primaria de la superclase se hereda.",
+      "Se modelan mediante una nueva asociación M:N."
+    ],
+    [cite_start]c: 1 // B [cite: 1117-1123]
+  },
+  {
+    t: 8,
+    q: "¿Cuál es la principal desventaja de la estrategia de 'Una única relación para toda la jerarquía'?",
+    o: [
+      "Se pierde información del dominio del problema.",
+      "Se requiere crear una tabla auxiliar M:N.",
+      "Alta probabilidad de tener muchos valores 'null' (Base de Datos dispersa).",
+      "Se necesita hacer consultas muy complejas con NATURAL JOIN.",
+      "El identificador de objeto debe ser una clave semántica.",
+      "Se requiere utilizar un atributo ordenado."
+    ],
+    [cite_start]c: 2 // C [cite: 1125-1131]
+  },
+  {
+    t: 8,
+    q: "En la estrategia de 'Una relación para cada clase de la jerarquía', ¿cómo se relacionan las relaciones de las subclases con la relación de la superclase?",
+    o: [
+      "Mediante una clave ajena en la superclase que apunta a la subclase.",
+      "La clave primaria de la subclase es también la clave ajena que referencia a la clave primaria de la superclase.",
+      "Se utiliza una agregación con rombo blanco.",
+      "Se relacionan mediante un UNIQUE y un CHECK.",
+      "No se relacionan, se mantienen aisladas.",
+      "La clave primaria de la subclase es la matrícula."
+    ],
+    [cite_start]c: 1 // B [cite: 1133-1139]
+  },
+  {
+    t: 8,
+    q: "Al transformar una composición ordenada de 1 a N, como Factura a LineaFactura con {ordered}, la relación Líneas Factura tiene una Clave Alternativa (AK) formada por:",
+    o: [
+      "lineaFacturaId y facturaId.",
+      "La clave primaria de Factura (facturaId).",
+      "facturaId y el atributo orden.",
+      "lineaFacturaId solamente.",
+      "cantidad y precio.",
+      "orden y cantidad."
+    ],
+    [cite_start]c: 2 // C [cite: 1141-1147]
+  },
+  {
+    t: 8,
+    q: "En la transformación de una asociación M:N a una relación auxiliar, ¿por qué es clave alternativa la pareja de claves ajenas (empleadoId, proyectoId) en la tabla Empleados Proyectos?",
+    o: [
+      "Porque el nombre de la asociación es participaEn.",
+      "Para permitir la redundancia de tuplas.",
+      "Para garantizar que un empleado solo participe una vez en el mismo proyecto (unicidad de la relación M:N).",
+      "Porque la clave primaria de la tabla auxiliar es un identificador de objeto.",
+      "Porque la clave primaria es siempre una clave surrogate.",
+      "Para poder aplicar la lógica trivaluada."
+    ],
+    [cite_start]c: 2 // C [cite: 1149-1155]
+  },
+
+  // --- TEMA 9: INTRODUCCIÓN AL ÁLGEBRA RELACIONAL ---
+  {
+    t: 9,
+    q: "¿Qué es el Álgebra Relacional (AR)?",
+    o: [
+      "Un lenguaje de programación basado en el Modelo Relacional.",
+      "Un conjunto de operadores sobre relaciones propuesto por Codd que permiten expresar consultas.",
+      "Un conjunto de tuplas que forman la extensión de una relación.",
+      "Un lenguaje de manipulación de datos (DML) de alto nivel.",
+      "El proceso de normalización de las tablas a 3FN.",
+      "Una estrategia para el desarrollo dirigido por modelos."
+    ],
+    [cite_start]c: 1 // B [cite: 909-915]
+  },
+  {
+    t: 9,
+    q: "Una propiedad fundamental de los operadores del Álgebra Relacional es que el resultado de su aplicación es:",
+    o: [
+      "Un conjunto de tuplas repetidas.",
+      "Un conjunto de atributos.",
+      "Una tabla no normalizada.",
+      "Una relación derivada, permitiendo que se puedan anidar.",
+      "Un valor escalar (un único número).",
+      "Una restricción con lógica trivaluada."
+    ],
+    [cite_start]c: 3 // D [cite: 917-923]
+  },
+  {
+    t: 9,
+    q: "¿Cuál es el prerrequisito esencial para aplicar los operadores conjuntistas (Unión, Intersección, Diferencia) a dos relaciones R y S?",
+    o: [
+      "Deben tener diferentes nombres de atributos.",
+      "R debe ser una subclase de S.",
+      "Deben ser relaciones compatibles, compartiendo los mismos dominios en sus intensiones.",
+      "El resultado debe ser una relación vacía.",
+      "Se debe aplicar primero el Producto Cartesiano.",
+      "Una de las relaciones debe tener multiplicidad obligatoria."
+    ],
+    [cite_start]c: 2 // C [cite: 925-931]
+  },
+  {
+    t: 9,
+    q: "Si se tiene una relación R con atributos A y B, y se realiza la operación T ← R U S con una relación compatible S, ¿qué contiene la extensión E(T)?",
+    o: [
+      "Solo las tuplas que están exclusivamente en R.",
+      "Las tuplas que están en ambas relaciones, E(R) ∩ E(S).",
+      "El producto cartesiano de las extensiones, E(R) x E(S).",
+      "Todas las tuplas que están en R o en S, sin duplicados.",
+      "Las tuplas que están en R pero no en S.",
+      "Las tuplas que satisfacen una fórmula f."
+    ],
+    [cite_start]c: 3 // D [cite: 933-939]
+  },
+  {
+    t: 9,
+    q: "La operación Diferencia T ← R - S devuelve como resultado:",
+    o: [
+      "Las tuplas que están en S pero no en R.",
+      "Las tuplas que están en ambas relaciones, R y S.",
+      "Todas las combinaciones de tuplas de R con tuplas de S.",
+      "Las tuplas que están en R pero no en S.",
+      "Las tuplas que están en R o en S.",
+      "Las tuplas que satisfacen el criterio de unicidad."
+    ],
+    [cite_start]c: 3 // D [cite: 941-947]
+  },
+  {
+    t: 9,
+    q: "¿Cuál es el resultado de la Proyección T ← Π_B(R), siendo B un subconjunto de los atributos de R?",
+    o: [
+      "Seleccionar las tuplas de R que satisfacen una condición.",
+      "Combinar tuplas de R con tuplas de S.",
+      "Extraer las columnas B de R, eliminando duplicados.",
+      "Calcular la función de agregación F sobre R.",
+      "Renombrar un atributo de R.",
+      "Obtener las tuplas que cumplen el criterio de minimalidad."
+    ],
+    [cite_start]c: 2 // C [cite: 949-955]
+  },
+  {
+    t: 9,
+    q: "La Combinación Natural (Natural Join) R ⋈ S se define como un operador derivado que combina en una sola operación:",
+    o: [
+      "Unión, Diferencia y Proyección.",
+      "Producto Cartesiano, Selección y Proyección.",
+      "Agregación, División y Renombrado.",
+      "Intersección, Selección y Diferencia.",
+      "Clave Primaria, Clave Ajena y Clave Alternativa.",
+      "Lógica trivaluada y lógica de predicados."
+    ],
+    [cite_start]c: 1 // B [cite: 957-963]
+  },
+  {
+    t: 9,
+    q: "En la expresión de la Combinación Natural R ⋈ S como operador derivado, ¿qué condición se aplica mediante la operación de Selección (σ)?",
+    o: [
+      "Que los atributos R.ci y S.ci sean diferentes.",
+      "Que se satisfaga una fórmula f bien formada sobre I(R).",
+      "Que la clave primaria de R sea igual a la clave ajena de S.",
+      "Que los valores de los atributos comunes ci en las tuplas de R y S sean iguales (r.ci = s.ci).",
+      "Que las tuplas se combinen con Product Cartesiano.",
+      "Que se devuelvan los valores de r tales que para todo s en S exista (r, s) en R."
+    ],
+    [cite_start]c: 3 // D [cite: 965-971]
+  },
+  {
+    t: 9,
+    q: "¿Cuál es el principal objetivo del operador División R ÷ S, donde R(r,s) y S(s) son dos relaciones?",
+    o: [
+      "Devuelve los valores de s tales que para todo valor de r en R exista una tupla (r, s) en R.",
+      "Devuelve los valores de r tales que para todo valor de s en S existe una tupla (r, s) en R.",
+      "Calcula el promedio de todos los atributos r.",
+      "Combina las tuplas de R con las de S que tienen un atributo común.",
+      "Devuelve las tuplas que están en R pero no en S.",
+      "Agrupa las tuplas por los valores de s."
+    ],
+    [cite_start]c: 1 // B [cite: 973-979]
+  },
+  {
+    t: 9,
+    q: "El operador de División R ÷ S se expresa como un operador derivado mediante una fórmula que implica qué tres operaciones clave:",
+    o: [
+      "Unión, Intersección y Proyección.",
+      "Selección, Diferencia y Combinación Natural.",
+      "Producto Cartesiano, Diferencia y Proyección.",
+      "Renombrado, Agregación y Selección.",
+      "División, Producto Cartesiano y Agregación.",
+      "Intersección, Producto Cartesiano y Diferencia."
+    ],
+    [cite_start]c: 2 // C [cite: 981-987]
+  },
+  {
+    t: 9,
+    q: "En la consulta de ejemplo: 'Nombre de los usuarios que han comprado todos los productos', ¿qué operador del Álgebra Relacional se utiliza para resolver el 'para todos' implícito?",
+    o: [
+      "Proyección (Π).",
+      "Combinación Natural (⋈).",
+      "Agregación (γ).",
+      "Producto Cartesiano (×).",
+      "División (÷).",
+      "Intersección (∩)."
+    ],
+    [cite_start]c: 4 // E [cite: 989-995]
+  },
+  {
+    t: 9,
+    q: "En el operador de Agregación γ_{G}^{F}(R), ¿qué representa el subconjunto de atributos G ⊂ I(R)?",
+    o: [
+      "La función de agregación a aplicar (Ej: count(*)).",
+      "Los atributos sobre los que se realiza el filtro (WHERE).",
+      "Los atributos de Agrupación, que determinan el número de particiones.",
+      "El resultado final de la consulta.",
+      "Los atributos de la relación R que no se incluyen en el resultado.",
+      "Los atributos sobre los que se aplica la función identidad."
+    ],
+    [cite_start]c: 2 // C [cite: 997-1003]
+  },
+  {
+    t: 9,
+    q: "Si en la operación de Agregación γ_{G}^{F}(R) se tiene que G = ∅ (conjunto vacío), ¿cuál es el efecto en la partición?",
+    o: [
+      "Se produce un error, ya que G no puede ser vacío.",
+      "La partición es toda la relación R, y el resultado es una única fila.",
+      "Se agrupa por cada atributo de la intensión I(R).",
+      "Se aplica la función identidad a toda la relación.",
+      "Se aplica la lógica trivaluada.",
+      "Se utiliza el operador de División."
+    ],
+    [cite_start]c: 1 // B [cite: 1005-1012]
+  },
+  {
+    t: 9,
+    q: "¿Cuál de las siguientes es una función de agregación válida para el operador γ?",
+    o: [
+      "IF.",
+      "SET.",
+      "ALL.",
+      "SUM.",
+      "SELECT.",
+      "WHERE."
+    ],
+    [cite_start]c: 3 // D [cite: 1014-1020]
+  },
+  {
+    t: 9,
+    q: "En la notación calificada, ¿qué significa R.a = atributo a de la relación R?",
+    o: [
+      "Que la relación R es compatible con a.",
+      "Que a es un atributo de tipo nulo en R.",
+      "Que a es una clave primaria de R.",
+      "Que el atributo a se prefija con el nombre de la relación R para evitar ambigüedad.",
+      "Que la proyección sobre R es igual a a.",
+      "Que se está aplicando el operador de renombrado."
+    ],
+    [cite_start]c: 3 // D [cite: 1022-1028]
+  },
+
+  // --- TEMA 10: INTRODUCCIÓN A SQL ---
+  {
+    t: 10,
+    q: "¿Cuál de los siguientes es el lenguaje estándar para definir, manipular y consultar bases de datos relacionales?",
+    o: [
+      "Álgebra Relacional (AR).",
+      "Modelo Conceptual (MC).",
+      "Structured Query Language (SQL).",
+      "MariaDB.",
+      "PL/SQL.",
+      "Transact-SQL (T-SQL)."
+    ],
+    [cite_start]c: 2 // C [cite: 518-524]
+  },
+  {
+    t: 10,
+    q: "¿Qué sublenguaje de SQL se utiliza para la gestión del esquema de la base de datos, incluyendo la creación, modificación y borrado de tablas y claves?",
+    o: [
+      "DQL (Data Query Language).",
+      "DML (Data Manipulation Language).",
+      "DDL (Data Definition Language).",
+      "DCL (Data Control Language).",
+      "TCL (Transaction Control Language).",
+      "DTL (Data Transformation Language)."
+    ],
+    [cite_start]c: 2 // C [cite: 526-532]
+  },
+  {
+    t: 10,
+    q: "Las sentencias INSERT, UPDATE, y DELETE pertenecen al sublenguaje de SQL conocido como:",
+    o: [
+      "DQL (Data Query Language).",
+      "DML (Data Manipulation Language).",
+      "DDL (Data Definition Language).",
+      "DCL (Data Control Language).",
+      "TCL (Transaction Control Language).",
+      "DTL (Data Transformation Language)."
+    ],
+    [cite_start]c: 1 // B [cite: 534-540]
+  },
+  {
+    t: 10,
+    q: "En la creación de una tabla mediante DDL, ¿qué se utiliza para especificar una Clave Alternativa (AK), como la combinación de nombreDep y localidad en la tabla Departamentos?",
+    o: [
+      "PRIMARY KEY.",
+      "FOREIGN KEY.",
+      "UNIQUE.",
+      "CHECK.",
+      "NOT NULL.",
+      "AUTO_INCREMENT."
+    ],
+    [cite_start]c: 2 // C [cite: 542-548]
+  },
+  {
+    t: 10,
+    q: "¿Qué acción realiza la cláusula ON DELETE SET NULL aplicada a una clave ajena (FK) en SQL?",
+    o: [
+      "Restringe la eliminación de la fila padre si existen filas hijo.",
+      "Propaga la eliminación de la fila padre a las filas hijo (CASCADE).",
+      "Establece el valor de la clave primaria de la tabla padre a NULL al borrar.",
+      "Permite la eliminación de la fila padre, y establece el valor de la clave ajena de las filas hijo a NULL.",
+      "No permite ninguna acción, es sinónimo de RESTRICT.",
+      "Establece la clave ajena al valor por defecto."
+    ],
+    [cite_start]c: 3 // D [cite: 550-556]
+  },
+  {
+    t: 10,
+    q: "¿Cuál de las siguientes sentencias DDL se utiliza para definir una restricción que deben cumplir los valores de uno o varios atributos, como comision >= 0 AND comision <= 1?",
+    o: [
+      "DEFAULT.",
+      "PRIMARY KEY.",
+      "REFERENCES.",
+      "UNIQUE.",
+      "CHECK.",
+      "ON DELETE."
+    ],
+    [cite_start]c: 4 // E [cite: 558-564]
+  },
+  {
+    t: 10,
+    q: "La cláusula DQL SELECT DISTINCT tiene como objetivo:",
+    o: [
+      "Incluir todas las tuplas, incluyendo duplicados (SELECT ALL).",
+      "Incluir únicamente las tuplas que contienen valores nulos.",
+      "Devolver tuplas sin repeticiones, similar a cómo operan los operadores del Álgebra Relacional.",
+      "Realizar una consulta que requiere una subconsulta anidada.",
+      "Implementar el operador de Agregación.",
+      "Ordenar el resultado de forma ascendente."
+    ],
+    [cite_start]c: 2 // C [cite: 566-572]
+  },
+  {
+    t: 10,
+    q: "En una consulta SELECT, la cláusula ORDER BY se utiliza para:",
+    o: [
+      "Filtrar filas antes de la agregación.",
+      "Agrupar tuplas que tienen el mismo valor para ciertos atributos.",
+      "Comparar un valor individual con un conjunto de valores.",
+      "Ordenar el resultado de la consulta.",
+      "Eliminar tuplas duplicadas.",
+      "Implementar el Producto Cartesiano."
+    ],
+    [cite_start]c: 3 // D [cite: 574-580]
+  },
+  {
+    t: 10,
+    q: "En SQL, ¿qué operador se utiliza para encontrar tuplas que tienen valores de un atributo dentro de un rango específico, incluyendo los valores de los extremos (Ej: salario >= 2000 AND salario <= 3000)?",
+    o: [
+      "LIKE.",
+      "IN.",
+      "EXISTS.",
+      "BETWEEN.",
+      "ANY.",
+      "ALL."
+    ],
+    [cite_start]c: 3 // D [cite: 582-588]
+  },
+  {
+    t: 10,
+    q: "El operador LIKE en SQL se utiliza para:",
+    o: [
+      "Comparar valores numéricos.",
+      "Comparar cadenas de caracteres, permitiendo el uso de expresiones regulares (con % y _).",
+      "Comprobar si existe un conjunto de tuplas.",
+      "Verificar si un valor es nulo.",
+      "Combinar el resultado de dos consultas.",
+      "Reemplazar la necesidad de claves ajenas."
+    ],
+    [cite_start]c: 1 // B [cite: 590-596]
+  },
+  {
+    t: 10,
+    q: "¿Qué se utiliza en SQL para implementar el operador Producto Cartesiano del Álgebra Relacional?",
+    o: [
+      "La cláusula NATURAL JOIN.",
+      "La cláusula LEFT JOIN.",
+      "Listar las tablas separadas por comas en la cláusula FROM (Ej: FROM Empleados, Departamentos).",
+      "La cláusula UNION.",
+      "La cláusula GROUP BY.",
+      "La cláusula WHERE con una condición."
+    ],
+    [cite_start]c: 2 // C [cite: 598-604]
+  },
+  {
+    t: 10,
+    q: "En el contexto de la familia de los JOIN del SQL, el LEFT JOIN devuelve:",
+    o: [
+      "Solo las filas de las tablas que cumplen la condición de enlace (INNER JOIN).",
+      "Todas las filas de la tabla de la derecha y solo las que cumplen la condición de la tabla de la izquierda.",
+      "Todas las filas de la tabla de la izquierda, y las filas que cumplen la condición de la tabla de la derecha (los demás valores son NULL).",
+      "El producto cartesiano de ambas tablas.",
+      "Las filas que no cumplen la condición de enlace.",
+      "El resultado de la consulta sin duplicados."
+    ],
+    [cite_start]c: 2 // C [cite: 606-612]
+  },
+  {
+    t: 10,
+    q: "¿Qué operador DQL se utiliza para saber si un subconjunto de tuplas cumple o no una determinada condición (Ej: WHERE NOT EXISTS (...))?",
+    o: [
+      "UNION.",
+      "INTERSECT.",
+      "LIKE.",
+      "BETWEEN.",
+      "EXISTS.",
+      "ORDER BY."
+    ],
+    [cite_start]c: 4 // E [cite: 614-620]
+  },
+  {
+    t: 10,
+    q: "En SQL, la cláusula GROUP BY es el equivalente funcional al operador del Álgebra Relacional:",
+    o: [
+      "Proyección (Π).",
+      "Selección (σ).",
+      "Combinación Natural (⋈).",
+      "Agregación (γ).",
+      "Diferencia (-).",
+      "División (÷)."
+    ],
+    [cite_start]c: 3 // D [cite: 622-628]
+  },
+  {
+    t: 10,
+    q: "La cláusula HAVING en SQL se utiliza para:",
+    o: [
+      "Filtrar las filas antes de la agrupación (WHERE).",
+      "Ordenar las tuplas finales de la consulta.",
+      "Especificar una condición sobre el grupo de tuplas asociado a cada valor de los atributos de agrupación.",
+      "Renombrar las columnas de resultado.",
+      "Implementar la lógica trivaluada.",
+      "Aplicar la función de agregación a toda la relación."
+    ],
+    [cite_start]c: 2 // C [cite: 630-636]
+  },
+
+  // --- TEMA 11: SQL AVANZADO ---
+  {
+    t: 11,
+    q: "¿Cuál es una de las principales ventajas de implementar lógica de negocio (operaciones avanzadas) directamente en el motor del SGBD (por ejemplo, con T-SQL o PL/SQL)?",
+    o: [
+      "Mayor flexibilidad para cambiar el modelo relacional.",
+      "Permite aplicar la lógica trivaluada de forma nativa.",
+      "Mejor rendimiento que si se hicieran las operaciones en lenguajes de alto nivel como Java o C.",
+      "Simplifica la necesidad de definir claves primarias y ajenas.",
+      "Permite la integración continua de forma automática.",
+      "Garantiza la Tercera Forma Normal (3FN)."
+    ],
+    [cite_start]c: 2 // C [cite: 647-653]
+  },
+  {
+    t: 11,
+    q: "¿Qué tipo de objeto avanzado de SQL implementa lógica que modifica datos en las tablas y se invoca mediante la sentencia CALL?",
+    o: [
+      "Funciones (Stored Functions).",
+      "Triggers (Disparadores).",
+      "Vistas (Views).",
+      "Procedimientos (Stored Procedures).",
+      "Sentencias SELECT.",
+      "Restricciones CHECK."
+    ],
+    [cite_start]c: 3 // D [cite: 655-661]
+  },
+  {
+    t: 11,
+    q: "¿Qué tipo de objeto avanzado de SQL está diseñado para realizar cálculos sin modificar datos en tablas y se puede utilizar en sentencias SELECT y WHERE?",
+    o: [
+      "Vistas.",
+      "Procedimientos.",
+      "Triggers.",
+      "Funciones.",
+      "CHECK constraints.",
+      "CALL statements."
+    ],
+    [cite_start]c: 3 // D [cite: 663-669]
+  },
+  {
+    t: 11,
+    q: "Los Disparadores (Triggers) se asocian a qué tipo de eventos en las tablas y se ejecutan automáticamente antes o después de dicho evento?",
+    o: [
+      "SELECT.",
+      "CALL RETURN.",
+      "CREATE y DROP.",
+      "INSERT, UPDATE, y DELETE.",
+      "GROUP BY y HAVING.",
+      "SET TRANSACTION ISOLATION LEVEL."
+    ],
+    [cite_start]c: 3 // D [cite: 671-677]
+  },
+  {
+    t: 11,
+    q: "En el contexto de los Triggers, ¿qué variable se utiliza para acceder a los valores de la fila que se van a insertar o actualizar (valores nuevos)?",
+    o: [
+      "old.",
+      "current.",
+      "new.",
+      "inserting.",
+      "updating.",
+      "value."
+    ],
+    [cite_start]c: 2 // C [cite: 679-685]
+  },
+  {
+    t: 11,
+    q: "Las Vistas (Views) en SQL son:",
+    o: [
+      "Tablas reales que almacenan datos propios.",
+      "Procedimientos que devuelven un conjunto de filas.",
+      "Código asociado a eventos como INSERT UPDATE.",
+      "Tablas virtuales basadas en el resultado de una consulta, que no almacenan datos propios.",
+      "Funciones de agregación que solo pueden usarse con GROUP BY.",
+      "Restricciones de integridad referencial."
+    ],
+    [cite_start]c: 3 // D [cite: 687-693]
+  },
+  {
+    t: 11,
+    q: "¿Cuál de las siguientes operaciones de manipulación no se puede realizar directamente sobre una Vista en SQL (según el material)?",
+    o: [
+      "SELECT.",
+      "JOIN.",
+      "GROUP BY.",
+      "ORDER BY.",
+      "INSERT, UPDATE, DELETE.",
+      "WHERE."
+    ],
+    [cite_start]c: 4 // E [cite: 695-701]
+  },
+  {
+    t: 11,
+    q: "Una de las ventajas de las Vistas es que permiten seguridad y control de acceso al:",
+    o: [
+      "Bloquear la vista para que solo una transacción acceda a la vez.",
+      "Mostrar solo las columnas y filas necesarias para cada usuario de la BD, encapsulando la estructura completa.",
+      "Eliminar el uso de claves primarias y ajenas.",
+      "Sustituir todos los FOREIGN KEY por UNIQUE.",
+      "Aplicar un nivel de aislamiento SERIALIZABLE.",
+      "Forzar la ejecución de ROLLBACK en caso de fallo."
+    ],
+    [cite_start]c: 1 // B [cite: 703-709]
+  },
+  {
+    t: 11,
+    q: "¿Cuál es el objetivo de utilizar la sentencia DELIMITER // ... DELIMITER; en la sintaxis de MariaDB (o MySQL) para procedimientos y triggers?",
+    o: [
+      "Marcar el inicio y el fin de una transacción con COMMIT y ROLLBACK.",
+      "Indicar que el bloque BEGIN-END se separa por el delimitador;.",
+      "Indicar que las siguientes instrucciones acaban con el delimitador // hasta que se restablece al;.",
+      "Definir una función de agregación con parámetros de entrada/salida.",
+      "Simplificar el acceso a datos complejos mediante una tabla virtual.",
+      "Comprobar que un empleado no es su propio jefe."
+    ],
+    [cite_start]c: 2 // C [cite: 711-718]
+  },
+  {
+    t: 11,
+    q: "Si un Trigger se define como BEFORE UPDATE, y en su cuerpo se intenta modificar el valor de una columna usando la variable new, ¿cuál es el resultado de la operación?",
+    o: [
+      "Se produce un error, ya que new es solo lectura.",
+      "El valor de la columna se actualizará con el valor modificado por el trigger.",
+      "El trigger falla, ya que solo los procedimientos pueden modificar datos.",
+      "EI SGBD aplica un ROLLBACK automáticamente.",
+      "Se dispara un problema de Lectura Sucia.",
+      "El valor de la columna se establece a NULL."
+    ],
+    [cite_start]c: 1 // B [cite: 720-726]
+  },
+  {
+    t: 11,
+    q: "En el ejemplo del Trigger que comprueba que un empleado no es su propio jefe, al detectar la condición (new.empleadoId = new.jefe), se utiliza la sentencia SIGNAL SQLSTATE '45000' para:",
+    o: [
+      "Ejecutar un COMMIT en la transacción.",
+      "Forzar un ROLLBACK en el bloque BEGIN-END.",
+      "Lanzar un error con un mensaje personalizado.",
+      "Asignar un nuevo valor a la columna jefe.",
+      "Crear una nueva fila en la tabla Empleados.",
+      "Definir un parámetro de salida."
+    ],
+    [cite_start]c: 2 // C [cite: 728-734]
+  },
+  {
+    t: 11,
+    q: "¿Qué tipo de problema de concurrencia ayuda a solucionar la cláusula FOR UPDATE que algunos SGBD permiten añadir a un SELECT con nivel READ_COMMITTED?",
+    o: [
+      "Lectura Sucia (Dirty Read).",
+      "Lectura No Repetible (Non-repeatable read).",
+      "Lectura Fantasma (Phantom Read).",
+      "Actualización Perdida (Lost Update).",
+      "Interbloqueo (Deadlock).",
+      "Violación de integridad referencial."
+    ],
+    [cite_start]c: 3 // D [cite: 736-742]
+  },
+  {
+    t: 11,
+    q: "Una limitación de las Funciones (Stored Functions) en MariaDB/MySQL (a diferencia de otros SGBD) es que en su cuerpo:",
+    o: [
+      "No pueden utilizar sentencias SELECT.",
+      "No pueden tener parámetros de entrada.",
+      "Solo pueden hacer SELECTS y no modificar datos (INSERT/UPDATE/DELETE).",
+      "No pueden devolver un valor.",
+      "No pueden llamar a Triggers.",
+      "No pueden usar la cláusula WHERE."
+    ],
+    [cite_start]c: 2 // C [cite: 744-750]
+  },
+  {
+    t: 11,
+    q: "El uso del código: DECLARE cm DOUBLE; SET cm = fComisionMedia(); UPDATE Empleados SET comision = cm; dentro de un procedimiento demuestra que una función, al ser llamada dentro de un procedimiento, debe:",
+    o: [
+      "Ser declarada como AGGREGATE FUNCTION.",
+      "Ser invocada mediante CALL.",
+      "Devolver un valor que debe ser almacenado en una variable (cm).",
+      "No puede modificar datos, por lo que el UPDATE falla.",
+      "Solo puede usarse en un SELECT INTO.",
+      "Utilizar variables old y new."
+    ],
+    [cite_start]c: 2 // C [cite: 752-759]
+  },
+  {
+    t: 11,
+    q: "¿Qué riesgo se presenta al incorporar datos suministrados por el usuario directamente en una sentencia SQL, como se ilustra con el ejemplo de la matrícula maliciosa?",
+    o: [
+      "Violación de la Integridad de la Entidad.",
+      "Pérdida de rendimiento en la ejecución.",
+      "Riesgo de Inyección SQL.",
+      "Generación de valores nulos.",
+      "Problema de Lectura No Repetible.",
+      "Disparo no controlado de Triggers."
+    ],
+    [cite_start]c: 2 // C [cite: 761-768]
+  },
+
+  // --- TEMA 12: TRANSACCIONES ---
+  {
+    t: 12,
+    q: "En el contexto de una Base de Datos, una Transacción es:",
+    o: [
+      "Cualquier consulta SELECT simple realizada sobre una tabla.",
+      "Una secuencia de operaciones que forman una unidad lógica de trabajo en una BD.",
+      "Un error de programación que causa un ROLLBACK automático.",
+      "El conjunto de bloqueos (locks) aplicados a un gránulo de datos.",
+      "La ejecución secuencial de todas las operaciones para evitar problemas de concurrencia.",
+      "Un tipo de fallo del medio que requiere copias de seguridad."
+    ],
+    [cite_start]c: 1 // B [cite: 128-134]
+  },
+  {
+    t: 12,
+    q: "¿Cuál es la propiedad ACID que establece que, si se confirma una transacción (commit), se ejecutan todas las operaciones; si se cancela (rollback), no se ejecuta ninguna?",
+    o: [
+      "Consistencia (Consistency).",
+      "Aislamiento (Isolation).",
+      "Durabilidad (Durability).",
+      "Atomicidad (Atomicity).",
+      "Concurrencia (Concurrency).",
+      "Serializabilidad (Serializability)."
+    ],
+    [cite_start]c: 3 // D [cite: 136-143]
+  },
+  {
+    t: 12,
+    q: "La propiedad Consistencia (Consistency) en una transacción implica que:",
+    o: [
+      "La transacción se realiza como si fuera la única ejecutándose en la BD.",
+      "Los cambios en la base de datos se hacen permanentes incluso ante un fallo.",
+      "A partir de un estado inicial consistente (S0), se deja la base de datos en otro estado consistente (S1), respetando todas las reglas de integridad.",
+      "El SGBD siempre utiliza bloqueos para garantizar la secuenciabilidad.",
+      "Los estados intermedios (I_{1..n}) deben ser visibles para otras transacciones.",
+      "La transacción siempre finaliza con un COMMIT."
+    ],
+    [cite_start]c: 2 // C [cite: 145-151]
+  },
+  {
+    t: 12,
+    q: "La propiedad Aislamiento (Isolation) es la menos desarrollada en los SGBD y su objetivo es:",
+    o: [
+      "Garantizar que los estados intermedios de una transacción (I_{1..n}) no sean visibles para otras transacciones.",
+      "Asegurar que el medio de almacenamiento no se vea afectado por un fallo del sistema.",
+      "Definir la lógica trivaluada (true, false, null).",
+      "Evitar fallos de hardware o problemas de alimentación eléctrica.",
+      "Reducir el rendimiento al ejecutar las transacciones secuencialmente.",
+      "Permitir la lectura de datos no confirmados de otras transacciones."
+    ],
+    [cite_start]c: 0 // A [cite: 153-159]
+  },
+  {
+    t: 12,
+    q: "¿Cuál es la propiedad ACID que hace responsable al SGBD de que los cambios en la base de datos sean permanentes, incluso si se produce un fallo del sistema?",
+    o: [
+      "Atomicidad.",
+      "Consistencia.",
+      "Aislamiento.",
+      "Durabilidad.",
+      "Bloqueo.",
+      "Concurrencia."
+    ],
+    [cite_start]c: 3 // D [cite: 161-167]
+  },
+  {
+    t: 12,
+    q: "El problema de concurrencia conocido como Actualización Perdida (Lost Update) ocurre cuando:",
+    o: [
+      "Una transacción lee un valor que está siendo modificado por otra transacción que podría cancelarse (ROLLBACK).",
+      "Se obtienen lecturas diferentes del mismo valor durante la misma transacción.",
+      "Unas transacciones sobrescriben las actualizaciones de otras.",
+      "Se obtienen lecturas diferentes de un conjunto de tuplas durante la misma transacción.",
+      "Una transacción no puede obtener un bloqueo exclusivo y debe esperar.",
+      "EI SGBD no utiliza marcas de tiempo (timestamps) para la secuenciabilidad."
+    ],
+    [cite_start]c: 2 // C [cite: 169-175]
+  },
+  {
+    t: 12,
+    q: "El problema de concurrencia Lectura Sucia (Dirty Read), también llamado dependencia no confirmada, se produce cuando:",
+    o: [
+      "Se lee un valor que está siendo modificado por una transacción que no ha finalizado y que podría cancelarse o fallar.",
+      "Dos transacciones intentan actualizar la misma fila y solo una lo consigue.",
+      "Una transacción lee un conjunto de tuplas diferente en dos momentos distintos.",
+      "Una transacción obtiene el mismo valor al leer dos veces la misma tupla.",
+      "El nivel de aislamiento es SERIALIZABLE.",
+      "La clave primaria de la tabla se establece a NULL."
+    ],
+    [cite_start]c: 0 // A [cite: 177-183]
+  },
+  {
+    t: 12,
+    q: "¿Cuál de los siguientes problemas de concurrencia ocurre cuando se obtienen lecturas diferentes del mismo valor (una tupla) durante la misma transacción, debido a que otra transacción modifica ese valor entre las lecturas?",
+    o: [
+      "Actualización Perdida.",
+      "Lectura Sucia.",
+      "Lectura No Repetible (Non-repeatable read).",
+      "Lectura Fantasma (Phantom read).",
+      "Interbloqueo.",
+      "Fallo de Transacción."
+    ],
+    [cite_start]c: 2 // C [cite: 185-191]
+  },
+  {
+    t: 12,
+    q: "El problema de concurrencia Lectura Fantasma (Phantom Read) se caracteriza por:",
+    o: [
+      "La pérdida de una actualización debido a una sobrescritura.",
+      "La lectura de datos aún no confirmados.",
+      "Obtener lecturas diferentes de un conjunto de tuplas durante la misma transacción (debido a la inserción/eliminación de tuplas por otra transacción).",
+      "Obtener lecturas diferentes de una misma tupla en la misma transacción.",
+      "Ser evitado por el nivel de aislamiento READ_UNCOMMITTED.",
+      "Ser resuelto por el uso de la cláusula FOR UPDATE."
+    ],
+    [cite_start]c: 2 // C [cite: 193-200]
+  },
+  {
+    t: 12,
+    q: "Una de las formas de evitar los problemas de concurrencia sin reducir mucho el rendimiento del SGBD es:",
+    o: [
+      "Ejecutar las transacciones secuencialmente (reduce mucho el rendimiento).",
+      "Utilizar únicamente COMMIT y evitar el ROLLBACK.",
+      "Ejecutar las transacciones concurrentemente, pero con un plan de ejecución secuenciable.",
+      "Aplicar la lógica trivaluada a todas las operaciones.",
+      "Utilizar el nivel de aislamiento READ_UNCOMMITTED por defecto.",
+      "Bloquear únicamente el gránulo de la tabla."
+    ],
+    [cite_start]c: 2 // C [cite: 202-208]
+  },
+  {
+    t: 12,
+    q: "En el control de concurrencia mediante bloqueos, un Gránulo de Bloqueo es:",
+    o: [
+      "Una transacción que espera a la liberación de otra.",
+      "El tiempo de espera máximo antes de que una transacción falle.",
+      "La unidad (tabla, rango de filas, fila, columna) que puede ser bloqueada por una transacción.",
+      "El plan de ejecución secuenciable de las transacciones.",
+      "Un fallo de hardware del medio de almacenamiento.",
+      "Una marca de tiempo (timestamp) de la transacción."
+    ],
+    [cite_start]c: 2 // C [cite: 210-216]
+  },
+  {
+    t: 12,
+    q: "¿Qué nivel de aislamiento de SQL-92 garantiza la secuenciabilidad de la transacción con todas las demás transacciones concurrentes, y hace fallar la transacción si no puede garantizarlo?",
+    o: [
+      "READ_UNCOMMITTED.",
+      "READ_COMMITTED (Valor por defecto).",
+      "REPEATABLE_READ.",
+      "SERIALIZABLE.",
+      "ISOLATED_READ.",
+      "FOR_UPDATE."
+    ],
+    [cite_start]c: 3 // D [cite: 218-224]
+  },
+  {
+    t: 12,
+    q: "¿Cuál es el nivel de aislamiento de SQL-92 que permite leer datos no confirmados de otras transacciones y, por lo tanto, es el más propenso a problemas de concurrencia?",
+    o: [
+      "READ_UNCOMMITTED.",
+      "READ_COMMITTED.",
+      "REPEATABLE_READ.",
+      "SERIALIZABLE.",
+      "ISOLATED_READ.",
+      "FOR_UPDATE."
+    ],
+    [cite_start]c: 0 // A [cite: 226-232]
+  },
+  {
+    t: 12,
+    q: "Cuando se produce un Fallo del Sistema (Ej: fallo de hardware o de alimentación eléctrica sin afectar el medio de almacenamiento), ¿quién es responsable de la recuperación y mediante qué mecanismo principal?",
+    o: [
+      "La aplicación, mediante el tratamiento de excepciones.",
+      "El SGBD, mediante el uso de bitácoras (logs) que se escriben en disco antes que las transacciones.",
+      "Los administradores, mediante copias de seguridad (backups).",
+      "El SGBD, ejecutando las transacciones secuencialmente.",
+      "La aplicación, aplicando un ROLLBACK manual.",
+      "El equipo de desarrollo, corrigiendo el error de programación."
+    ],
+    [cite_start]c: 1 // B [cite: 234-240]
+  },
+  {
+    t: 12,
+    q: "Para las transacciones que estaban completas (con COMMIT o finalizadas) pero que no estaban en el disco en el momento de un checkpoint o fallo, el algoritmo de recuperación debe:",
+    o: [
+      "No hacer nada, ya que se asume que están en disco.",
+      "Deshacer (ROLLBACK) la transacción, ya que está incompleta.",
+      "Rehacer (REDO) la transacción, ya que estaba completa pero no en disco.",
+      "Intentar una Lectura Sucia.",
+      "Aplicar un bloqueo exclusivo al gránulo.",
+      "Ejecutar las sentencias UPDATE nuevamente."
+    ],
+    [cite_start]c: 2 // C [cite: 242-248]
+  }
+];
